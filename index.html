@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Gyan - @Important4Exams</title>
     <style>
-        /* 1. THE LAYOUT ENGINE - Forces everything to the absolute center */
+        /* 1. LAYOUT ENGINE - Perfect Centering */
         body {
             margin: 0;
             padding: 0;
@@ -13,119 +13,143 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f0f2f5; /* Light, clean background */
+            background: linear-gradient(135px, #f5f7fa 0%, #c3cfe2 100%);
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            overflow-x: hidden;
+            color: #2c3e50;
         }
 
-        /* 2. THE MAIN WRAPPER - This is your "App" box */
+        /* 2. MAIN APP CONTAINER */
         .app-container {
             width: 90%;
             max-width: 400px;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
             text-align: center;
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        /* 3. THE 3D GLASS CARD */
+        /* 3. 3D GLASS CARD DESIGN */
         .card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: #ffffff;
             border-radius: 20px;
-            padding: 30px;
-            min-height: 220px;
+            padding: 35px 25px;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            box-shadow: inset 5px 5px 10px #e6e9ed, inset -5px -5px 10px #ffffff;
+            box-shadow: inset 6px 6px 12px #eff2f7, inset -6px -6px 12px #ffffff;
             margin-bottom: 20px;
             position: relative;
+            border: 1px solid #e0e6ed;
         }
 
-        .category-badge {
+        /* Category Badge */
+        #category {
             position: absolute;
             top: 15px;
-            left: 15px;
+            left: 50%;
+            transform: translateX(-50%);
             background: #34495e;
             color: white;
-            padding: 4px 12px;
+            padding: 5px 15px;
             border-radius: 50px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: bold;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
+        /* Main Fact Text */
         #card-content {
-            font-size: 1.2rem;
-            color: #2c3e50;
+            font-size: 1.15rem;
             line-height: 1.6;
+            color: #34495e;
             font-weight: 500;
         }
 
-        /* 4. BUTTONS & UI */
-        .stats {
-            font-size: 0.85rem;
+        /* 4. INTERACTIVE ELEMENTS */
+        #progress-text {
+            font-size: 0.9rem;
             color: #7f8c8d;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
-        .btn-next {
+        #next-btn {
             background: #2c3e50;
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 15px;
-            font-size: 1rem;
-            font-weight: 600;
+            padding: 18px;
+            border-radius: 18px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.2);
         }
 
-        .btn-next:active {
-            transform: scale(0.98);
+        #next-btn:hover {
+            background: #34495e;
+            transform: translateY(-2px);
         }
 
-        .btn-support {
-            margin-top: 15px;
-            background: #f8f9fa;
-            color: #555;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.9rem;
+        #next-btn:active {
+            transform: translateY(0);
         }
 
-        .footer-credit {
+        #next-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Support Button */
+        .support-btn {
             margin-top: 20px;
+            display: inline-block;
+            background: #fdfdfd;
+            color: #555;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            border: 1px solid #eee;
+            transition: background 0.2s;
+        }
+
+        .support-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .brand-footer {
+            margin-top: 25px;
             font-size: 0.8rem;
-            color: #bdc3c7;
+            color: #95a5a6;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
     <div class="app-container">
-        <div class="card">
-            <span class="category-badge" id="category">DAILY GYAN</span>
-            <div id="card-content">Loading today's high-yield facts...</div>
+        <div class="card" id="gyan-card">
+            <span id="category">LOADING...</span>
+            <div id="card-content">Preparing your revision cards...</div>
         </div>
 
-        <div class="stats" id="progress-text">Card 1 of 10</div>
+        <div id="progress-text">Card 1 of 10 today</div>
 
-        <button class="btn-next" id="next-btn">Next Surprise →</button>
+        <button id="next-btn">Next Surprise →</button>
 
-        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="btn-support">
+        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="support-btn">
             ☕ Support my work with a tea!
         </a>
 
-        <div class="footer-credit">By @Important4Exams</div>
+        <div class="brand-footer">Daily Gyan by <b>@Important4Exams</b></div>
     </div>
 
     <script src="gyan_data.js"></script>
