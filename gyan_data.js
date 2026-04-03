@@ -720,3 +720,6 @@ const gyanDatabase = [
   { id: 599, cat: "Awareness", title: "Post-Naxal Dev.", body: "Final 2026 focus: Integration of remote tribal areas into the mainstream.", color: "#c0392b" },
   { id: 600, cat: "Quiz", title: "Largest Ocean", body: "The Pacific Ocean covers more than one-third of the entire Earth.", color: "#16a085" }
 ];
+```javascript
+// This line is CRITICAL for the Web Version to work
+window.gyanDatabase = gyanDatabase;
