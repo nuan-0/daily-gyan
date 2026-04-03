@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Daily Gyan - @Important4Exams</title>
+    <title>Fact101 - @Important4Exams</title>
     <style>
         :root {
-            --bg: #e0e5ec;
-            --shadow-dark: #a3b1c6;
-            --shadow-light: #ffffff;
-            --primary: #2c3e50;
+            --primary: #2d3436;
+            --glass: rgba(255, 255, 255, 0.35);
+            /* High Contrast 3D Shadows - NO MORE DIM LOOK */
+            --card-shadow: 20px 20px 45px rgba(0,0,0,0.25);
+            --light-glow: -12px -12px 30px rgba(255,255,255,0.95);
         }
 
-        /* 1. ANIMATED GRADIENT BACKGROUND (From previous version) */
         body {
             margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,28 +26,27 @@
             overflow: hidden;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes gradientMove { 
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; } 
         }
 
-        /* 2. GLASS APP CONTAINER */
         .app-container {
             width: 92%;
             max-width: 400px;
-            background: rgba(224, 229, 236, 0.9);
-            backdrop-filter: blur(10px);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
             border-radius: 40px;
-            padding: 30px 20px;
+            padding: 35px 22px;
             text-align: center;
-            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        /* 3. THE 3D MAIN CONTENT BOX */
+        /* VIBRANT 3D MAIN BOX */
         #gyan-card {
-            background-color: #fff; /* Default start */
+            background-color: #ffffff; 
             border-radius: 35px;
             padding: 50px 25px;
             min-height: 280px;
@@ -56,121 +54,78 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* DEEP 3D SHADOWS */
-            box-shadow: 15px 15px 30px var(--shadow-dark), 
-                       -15px -15px 30px var(--shadow-light);
+            box-shadow: var(--card-shadow), var(--light-glow);
             margin-bottom: 35px;
             position: relative;
-            transition: all 0.5s ease; /* Smooth color & movement transition */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #ffffff;
         }
 
         #category {
             position: absolute;
-            top: -15px;
+            top: -18px;
             background: var(--primary);
-            color: white;
+            color: #fff;
             padding: 10px 25px;
             border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            font-size: 0.8rem;
+            font-weight: 900;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             text-transform: uppercase;
         }
 
         #card-content {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            color: #2c3e50;
-            font-weight: 600;
+            font-size: 1.45rem;
+            line-height: 1.5;
+            color: #1a202c; 
+            font-weight: 700;
         }
 
-        /* 4. ALL BOXES IN 3D STYLE */
         #progress-text {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--bg);
-            border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            color: #2d3436;
+            margin-bottom: 20px;
             font-weight: 800;
-            color: #718096;
-            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
-            margin-bottom: 25px;
+            background: rgba(255,255,255,0.5);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 12px;
         }
 
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
+        .button-group { display: flex; gap: 15px; }
+        
         .btn-3d {
             border: none;
             padding: 18px;
             border-radius: 20px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+            transition: all 0.2s;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
         }
 
-        #back-btn { background: var(--bg); color: #7f8c8d; flex: 1; }
-        #next-btn { background: var(--primary); color: white; flex: 2; }
+        #back-btn { background: #fff; color: #636e72; flex: 1; }
+        #next-btn { background: var(--primary); color: #fff; flex: 2; }
+        
+        .btn-3d:active:not(:disabled) { transform: scale(0.94); box-shadow: none; }
+        .btn-3d:disabled { opacity: 0.4; cursor: not-allowed; }
 
-        .btn-3d:active:not(:disabled) {
-            box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
-            transform: scale(0.96);
-        }
-
-        .btn-3d:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
-
-        /* Support Button 3D */
-        .support-btn {
-            margin-top: 30px;
-            display: inline-block;
-            background: var(--bg);
-            color: #555;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 18px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
-        }
-
-        .footer {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: #4a5568;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .dot { height: 8px; width: 8px; background: #2ecc71; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.9); } 70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(46,204,113,0); } 100% { transform: scale(0.9); } }
+        .footer { margin-top: 25px; font-size: 0.85rem; color: #2d3436; font-weight: 600; }
     </style>
 </head>
 <body>
-
     <div class="app-container">
-        <div id="progress-text">CARD 1 OF 10</div>
-
+        <div id="progress-text">Fact101: 1 OF 10</div>
         <div id="gyan-card">
-            <span id="category">LOADING...</span>
-            <div id="card-content">Initialising revision...</div>
+            <span id="category">Fact101</span>
+            <div id="card-content">Initializing...</div>
         </div>
-
         <div class="button-group">
             <button id="back-btn" class="btn-3d">←</button>
-            <button id="next-btn" class="btn-3d">Next Surprise →</button>
+            <button id="next-btn" class="btn-3d">Next Fact101 →</button>
         </div>
-
-        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="support-btn">☕ Support @Important4Exams</a>
-
-        <div class="footer"><span class="dot"></span> <b>Daily Gyan</b> by @Important4Exams</div>
+        <div class="footer">Daily Gyan by <b>@Important4Exams</b></div>
     </div>
-
     <script src="gyan_data.js"></script>
     <script src="popup.js"></script>
 </body>
