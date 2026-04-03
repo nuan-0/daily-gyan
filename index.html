@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Daily Gyan - @Important4Exams</title>
     <style>
-        /* 1. GLOBAL RESET & CENTERING */
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --glass: rgba(255, 255, 255, 0.88);
+            --shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
+        /* 1. ANIMATED BACKGROUND */
         body {
             margin: 0;
             padding: 0;
@@ -18,153 +20,188 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135px, #f5f7fa 0%, #c3cfe2 100%);
-            font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
-            color: #2c3e50;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
         }
 
-        /* 2. MAIN APP CONTAINER */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 2. MAIN GLASS CONTAINER */
         .app-container {
             width: 92%;
             max-width: 400px;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--glass);
             backdrop-filter: blur(15px);
-            border-radius: 35px;
-            padding: 30px 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 35px 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.4);
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.6);
+            position: relative;
+            z-index: 10;
         }
 
-        /* 3. THE 3D GYAN CARD */
+        /* 3. THE INTERACTIVE CARD */
         #gyan-card {
             background: #ffffff;
-            border-radius: 25px;
-            padding: 45px 25px;
-            min-height: 220px;
+            border-radius: 30px;
+            padding: 50px 20px;
+            min-height: 240px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            box-shadow: inset 8px 8px 16px #e6e9ee, inset -8px -8px 16px #ffffff;
+            box-shadow: inset 5px 5px 15px #f0f0f0, inset -5px -5px 15px #ffffff;
             margin-bottom: 25px;
             position: relative;
-            border: 1px solid #ebf0f5;
-            transition: background-color 0.4s ease;
+            border: 1px solid #f1f1f1;
+            transition: transform 0.2s ease;
         }
 
-        /* Subject / Category Badge */
+        /* Category Badge */
         #category {
             position: absolute;
-            top: 20px;
-            background: #34495e;
-            color: white;
-            padding: 6px 16px;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 8px 20px;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 800;
-            letter-spacing: 1.2px;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Main Fact Text */
+        /* Main Content */
         #card-content {
             font-size: 1.25rem;
             line-height: 1.6;
             color: #2c3e50;
             font-weight: 600;
-            word-wrap: break-word;
         }
 
-        /* 4. PROGRESS & BUTTONS */
+        /* 4. BUTTONS & UI */
         #progress-text {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .btn-common {
+            border: none;
+            padding: 18px;
+            border-radius: 22px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #back-btn {
+            background: #e0e6ed;
             color: #7f8c8d;
-            margin-bottom: 20px;
-            font-weight: 600;
+            flex: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         #next-btn {
-            background: #2c3e50;
+            background: var(--primary);
             color: white;
-            border: none;
-            padding: 18px;
-            border-radius: 20px;
-            font-size: 1.15rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.25);
+            flex: 2;
+            box-shadow: 0 10px 20px rgba(44, 62, 80, 0.3);
         }
 
-        #next-btn:hover {
-            background: #1a252f;
-            transform: translateY(-2px);
-        }
+        #back-btn:hover:not(:disabled) { background: #d1d8e0; }
+        #next-btn:hover:not(:disabled) { background: #34495e; transform: translateY(-2px); }
 
-        #next-btn:active {
-            transform: translateY(1px);
-        }
+        .btn-common:active:not(:disabled) { transform: translateY(1px); }
+        .btn-common:disabled { opacity: 0.4; cursor: not-allowed; }
 
-        #next-btn:disabled {
-            background: #bdc3c7;
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-        }
-
-        /* 5. SUPPORT & FOOTER */
+        /* 5. FOOTER & BRANDING */
         .support-btn {
             margin-top: 25px;
-            display: inline-flex;
+            display: inline-block;
+            background: rgba(255,255,255,0.6);
+            color: #444;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: background 0.2s;
+        }
+
+        .support-btn:hover { background: #fff; }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: #666;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background: #ffffff;
-            color: #555;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            border: 1px solid #e1e8ed;
-            font-weight: 500;
-            transition: all 0.2s;
+            gap: 6px;
         }
 
-        .support-btn:hover {
-            background: #f8f9fa;
-            border-color: #ccd6dd;
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
-        .footer-text {
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: #95a5a6;
-        }
-
-        .footer-text b {
-            color: #7f8c8d;
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
         }
     </style>
 </head>
 <body>
 
     <div class="app-container">
+        <div id="progress-text">CARD 1 OF 10</div>
+
         <div id="gyan-card">
             <span id="category">LOADING...</span>
-            <div id="card-content">Initializing your daily revision...</div>
+            <div id="card-content">Initialising your daily revision...</div>
         </div>
 
-        <div id="progress-text">Card 1 of 10 today</div>
-
-        <button id="next-btn">Next Surprise →</button>
+        <div class="button-group">
+            <button id="back-btn" class="btn-common" title="Previous Fact">←</button>
+            <button id="next-btn" class="btn-common">Next Surprise →</button>
+        </div>
 
         <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="support-btn">
             ☕ Support @Important4Exams
         </a>
 
-        <div class="footer-text">Daily Gyan by <b>@Important4Exams</b></div>
+        <div class="footer">
+            <span class="status-dot"></span> <b>Daily Gyan</b> by @Important4Exams
+        </div>
     </div>
 
     <script src="gyan_data.js"></script>
