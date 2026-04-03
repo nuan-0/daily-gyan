@@ -1,75 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <style>
-  /* This centers everything on the screen */
-  body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Takes full height of the browser */
-    background: #e0e5ec; /* Light professional background */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Gyan - @Important4Exams</title>
+    <style>
+        /* 1. THE LAYOUT ENGINE - Forces everything to the absolute center */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5; /* Light, clean background */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
 
-  /* This is your main container */
-  .container {
-    width: 380px; /* Perfect width for mobile browsers */
-    padding: 20px;
-    background: #e0e5ec;
-    box-shadow: 20px 20px 60px #bec3c9, -20px -20px 60px #ffffff;
-    border-radius: 30px;
-    text-align: center;
-  }
+        /* 2. THE MAIN WRAPPER - This is your "App" box */
+        .app-container {
+            width: 90%;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
 
-  /* Ensuring your 3D card looks solid */
-  .card {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    min-height: 200px;
-    margin-bottom: 20px;
-    box-shadow: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+        /* 3. THE 3D GLASS CARD */
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: inset 5px 5px 10px #e6e9ed, inset -5px -5px 10px #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+        }
 
-  /* Make sure the text is visible */
-  #card-content {
-    color: #333;
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-</style>
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #34495e;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #card-content {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* 4. BUTTONS & UI */
+        .stats {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .btn-next {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+        }
+
+        .btn-next:active {
+            transform: scale(0.98);
+        }
+
+        .btn-support {
+            margin-top: 15px;
+            background: #f8f9fa;
+            color: #555;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .footer-credit {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #bdc3c7;
+        }
+    </style>
 </head>
 <body>
-  <div id="gyan-card" class="card">
-    <span id="category" class="tag">Category</span>
-    <h2 id="title">Daily Gyan</h2>
-    <p id="content">Loading your daily revision...</p>
-  </div>
 
-  <div id="status-msg" class="status-bar">Post 1 of 10 today</div>
+    <div class="app-container">
+        <div class="card">
+            <span class="category-badge" id="category">DAILY GYAN</span>
+            <div id="card-content">Loading today's high-yield facts...</div>
+        </div>
 
-  <div class="nav-btns">
-    <button id="fav-btn" title="Save Favorite">&#10084;</button>
-    <button id="next-btn">Next Surprise &#10141;</button>
-  </div>
+        <div class="stats" id="progress-text">Card 1 of 10</div>
 
-  <a href="https://upilinks.in/payment-link/upi925459343" id="support-link" class="support-link">
-    &#9749; Support my work with a tea!
-  </a>
+        <button class="btn-next" id="next-btn">Next Surprise →</button>
 
-  <div id="fav-list">
-    <strong>&#11088; My Revision List</strong>
-    <ul id="favs-ul"></ul>
-  </div>
+        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="btn-support">
+            ☕ Support my work with a tea!
+        </a>
 
-<script src="gyan_data.js"></script>
-<script src="popup.js"></script>
+        <div class="footer-credit">By @Important4Exams</div>
+    </div>
+
+    <script src="gyan_data.js"></script>
+    <script src="popup.js"></script>
+
 </body>
 </html>
