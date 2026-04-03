@@ -1,5 +1,5 @@
 /**
- * DAILY GYAN WEB APP LOGIC - NAVIGATION VERSION
+ * DAILY GYAN WEB APP LOGIC - 3D NEUMORPHIC EDITION
  * Features: Forward/Back Navigation & 10-Card Daily Limit
  * Built for @Important4Exams
  */
@@ -27,7 +27,7 @@ function updateUI(globalIndex) {
     // Update Category
     const catElement = document.getElementById('category');
     if (catElement) {
-        catElement.innerText = (item.category || item.cat || "GENERAL GYAN").toUpperCase();
+        catElement.innerText = (item.category || item.cat || "GYAN").toUpperCase();
     }
 
     // Update Content
@@ -35,16 +35,10 @@ function updateUI(globalIndex) {
     if (contentElement) {
         contentElement.innerText = item.fact || item.body || item.title || "Content Loading...";
     }
-
-    // Update Card Color
-    const cardElement = document.getElementById('gyan-card');
-    if (cardElement) {
-        cardElement.style.backgroundColor = item.color || "#ffffff";
-    }
 }
 
 /**
- * Calculates the Day of the Year for the 60-day loop
+ * Calculates the Day of the Year for the 60-day loop logic
  */
 function getCycleData() {
     const now = new Date();
@@ -53,6 +47,7 @@ function getCycleData() {
     const oneDay = 1000 * 60 * 60 * 24;
     const dayOfYear = Math.floor(diff / oneDay);
 
+    // currentCycleDay will be 0 to 59
     const currentCycleDay = (dayOfYear - 1) % LOOP_DAYS;
     const startIndex = currentCycleDay * 10;
 
@@ -67,24 +62,24 @@ function updateButtonAndProgress(currentIndex, maxUnlocked) {
     const backBtn = document.getElementById('back-btn');
     const progressText = document.getElementById('progress-text');
 
-    // Update Progress (e.g., Card 3 of 10)
+    // Update Progress Text
     if (progressText) {
         progressText.innerText = `CARD ${currentIndex + 1} OF ${DAILY_LIMIT}`;
     }
 
-    // BACK BUTTON: Disable if we are at the very first card of the day
+    // BACK BUTTON: Disable if at the very first card
     if (backBtn) {
-        backBtn.disabled = (currentIndex === 0);
+        backBtn.disabled = (currentIndex <= 0);
     }
 
     // NEXT BUTTON: Handle Forward vs Unlock vs Lock
     if (nextBtn) {
         if (currentIndex < maxUnlocked) {
-            // User went back and is now going forward again
+            // User is moving forward through cards already seen
             nextBtn.disabled = false;
             nextBtn.innerText = "Forward →";
         } else if (maxUnlocked >= (DAILY_LIMIT - 1)) {
-            // Daily limit reached
+            // Daily limit reached (Index 9 is the 10th card)
             nextBtn.disabled = true;
             nextBtn.innerText = "Goal Reached 🔒";
         } else {
@@ -96,7 +91,7 @@ function updateButtonAndProgress(currentIndex, maxUnlocked) {
 }
 
 /**
- * Initialize App
+ * Main Initialization Logic
  */
 function init() {
     const { startIndex, todayStr } = getCycleData();
@@ -112,22 +107,22 @@ function init() {
         localStorage.setItem('gyan_clickCount', '0');
     }
 
-    // Set initial viewing position to the furthest unlocked card
+    // Start user at their furthest progress point
     currentViewingIndex = maxUnlocked;
 
-    // Initial Load
+    // Initial Render
     updateUI(startIndex + currentViewingIndex);
     updateButtonAndProgress(currentViewingIndex, maxUnlocked);
 
-    // NEXT BUTTON CLICK
-    document.getElementById('next-btn').addEventListener('click', () => {
+    // --- NEXT BUTTON CLICK ---
+    document.getElementById('next-btn').onclick = () => {
         let latestMax = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
 
         if (currentViewingIndex < latestMax) {
-            // Just moving forward through cards already seen
+            // Moving forward through seen cards
             currentViewingIndex++;
         } else if (latestMax < (DAILY_LIMIT - 1)) {
-            // Unlocking a brand new card for the day
+            // Unlocking a brand new card
             latestMax++;
             currentViewingIndex = latestMax;
             localStorage.setItem('gyan_clickCount', latestMax.toString());
@@ -135,22 +130,22 @@ function init() {
 
         updateUI(startIndex + currentViewingIndex);
         updateButtonAndProgress(currentViewingIndex, latestMax);
-    });
+    };
 
-    // BACK BUTTON CLICK
-    document.getElementById('back-btn').addEventListener('click', () => {
+    // --- BACK BUTTON CLICK ---
+    document.getElementById('back-btn').onclick = () => {
         if (currentViewingIndex > 0) {
             currentViewingIndex--;
             const latestMax = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
             updateUI(startIndex + currentViewingIndex);
             updateButtonAndProgress(currentViewingIndex, latestMax);
         }
-    });
+    };
 }
 
-// Start once DOM is ready
+// Start once DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // 100ms delay ensures data is ready
+    // 100ms delay ensures data file is parsed
     setTimeout(() => {
         if (typeof gyanDatabase !== 'undefined' || typeof gyanData !== 'undefined') {
             init();
