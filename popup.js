@@ -1,129 +1,125 @@
-// --- CONFIGURATION ---
+/**
+ * DAILY GYAN WEB APP LOGIC
+ * Created for @Important4Exams
+ * Optimized for Mobile Browsers & GitHub Pages
+ */
+
+// --- 1. CONFIGURATION ---
 const DAILY_LIMIT = 10;
-const LOOP_DAYS = 60; // Your 60-day/600-item cycle
+const LOOP_DAYS = 60; // 60 days * 10 cards = 600 total facts
 
+/**
+ * Updates the Visual Card and Text
+ * @param {number} globalIndex - The exact index in gyanDatabase (0-599)
+ */
 function updateUI(globalIndex) {
-  const item = gyanDatabase[globalIndex] || gyanDatabase[0];
-  const card = document.getElementById('gyan-card');
-  card.style.backgroundColor = item.color || "#34495e";
-  document.getElementById('category').innerText = item.cat;
-  document.getElementById('title').innerText = item.title;
-  document.getElementById('content').innerText = item.body;
-}
-
-function initializeDailyContent() {
-  const now = new Date();
-  const todayStr = now.toDateString();
-  
-  // Calculate Day of the Year
-  const start = new Date(now.getFullYear(), 0, 0);
-  const diff = now - start;
-  const oneDay = 1000 * 60 * 60 * 24;
-  const dayOfYear = Math.floor(diff / oneDay);
-
-  // The 60-day rotation logic
-  const currentCycleDay = (dayOfYear - 1) % LOOP_DAYS; 
-  const startIndex = currentCycleDay * 10;
-
-  chrome.storage.local.get(['savedDate', 'clickCount'], (data) => {
-    let clicks = data.clickCount || 0;
-
-    // Reset if it's a new day
-    if (data.savedDate !== todayStr) {
-      clicks = 0;
-      chrome.storage.local.set({ savedDate: todayStr, clickCount: 0 });
+    // Safety check: Use gyanDatabase (from gyan_data.js)
+    const db = window.gyanDatabase || gyanDatabase;
+    
+    if (!db || !db[globalIndex]) {
+        console.error("Data Point Missing at index:", globalIndex);
+        return;
     }
 
-    const finalIndex = (startIndex + clicks);
-    updateUI(finalIndex);
-    updateButtonState(clicks);
-  });
+    const item = db[globalIndex];
+
+    // Update Category Badge
+    const catElement = document.getElementById('category');
+    if (catElement) catElement.innerText = item.category || "GENERAL GYAN";
+
+    // Update Main Fact Content
+    const contentElement = document.getElementById('card-content');
+    if (contentElement) contentElement.innerText = item.fact || item.body || "Content loading error...";
 }
 
-function updateButtonState(clicks) {
-  const btn = document.getElementById('next-btn');
-  const msg = document.getElementById('status-msg');
-  
-  if (clicks >= (DAILY_LIMIT - 1)) {
-    btn.disabled = true;
-    btn.innerText = "Daily Goal Reached! 🔒";
-    msg.innerHTML = "<b style='color:#e74c3c;'>All 10 revision cards done! See you tomorrow.</b>";
-  } else {
-    btn.disabled = false;
-    msg.innerText = `Card ${clicks + 1} of ${DAILY_LIMIT} today`;
-  }
+/**
+ * Calculates which day of the 60-day cycle we are on
+ */
+function getCycleData() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+
+    // currentCycleDay will be 0 to 59
+    const currentCycleDay = (dayOfYear - 1) % LOOP_DAYS;
+    const startIndex = currentCycleDay * 10;
+
+    return { startIndex, todayStr: now.toDateString() };
 }
 
-document.getElementById('next-btn').addEventListener('click', () => {
-  chrome.storage.local.get(['clickCount'], (data) => {
-    let currentClicks = data.clickCount || 0;
-    if (currentClicks < (DAILY_LIMIT - 1)) {
-      let newClicks = currentClicks + 1;
-      
-      const now = new Date();
-      const start = new Date(now.getFullYear(), 0, 0);
-      const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
-      const currentCycleDay = (dayOfYear - 1) % LOOP_DAYS;
-      const startIndex = currentCycleDay * 10;
+/**
+ * Handles the "Next" button logic and daily lock
+ */
+function updateButtonAndProgress(clicks) {
+    const btn = document.getElementById('next-btn');
+    const progressText = document.getElementById('progress-text');
 
-      chrome.storage.local.set({ clickCount: newClicks }, () => {
-        updateUI(startIndex + newClicks);
-        updateButtonState(newClicks);
-      });
+    if (progressText) {
+        progressText.innerText = `Card ${clicks + 1} of ${DAILY_LIMIT} today`;
     }
-  });
-});
 
-// --- FAVORITES LOGIC ---
-document.getElementById('fav-btn').addEventListener('click', () => {
-  const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
-  const currentCycleDay = (dayOfYear - 1) % LOOP_DAYS;
-  const startIndex = currentCycleDay * 10;
-
-  chrome.storage.local.get(['clickCount', 'myFavs'], (data) => {
-    const clicks = data.clickCount || 0;
-    const currentItem = gyanDatabase[startIndex + clicks] || gyanDatabase[0];
-    let favs = data.myFavs || [];
-    if (!favs.find(f => f.id === currentItem.id)) {
-      favs.push(currentItem);
-      chrome.storage.local.set({ myFavs: favs }, loadFavs);
+    if (btn) {
+        if (clicks >= (DAILY_LIMIT - 1)) {
+            btn.disabled = true;
+            btn.innerText = "Daily Goal Reached! 🔒";
+            btn.style.opacity = "0.6";
+            btn.style.cursor = "not-allowed";
+        } else {
+            btn.disabled = false;
+            btn.innerText = "Next Surprise →";
+            btn.style.opacity = "1";
+            btn.style.cursor = "pointer";
+        }
     }
-  });
-});
-
-function loadFavs() {
-  chrome.storage.local.get(['myFavs'], (result) => {
-    const list = document.getElementById('favs-ul');
-    list.innerHTML = '';
-    const favs = result.myFavs || [];
-    favs.forEach((fav) => {
-      let li = document.createElement('li');
-      li.className = 'fav-item';
-      li.innerHTML = `<span><b>${fav.title}</b></span> <span class="remove-btn" data-id="${fav.id}">&#10006;</span>`;
-      list.appendChild(li);
-    });
-  });
 }
 
-document.getElementById('fav-list').addEventListener('click', (e) => {
-  if (e.target.classList.contains('remove-btn')) {
-    const idToRemove = parseInt(e.target.getAttribute('data-id'));
-    chrome.storage.local.get(['myFavs'], (result) => {
-      let favs = result.myFavs.filter(f => f.id !== idToRemove);
-      chrome.storage.local.set({ myFavs: favs }, loadFavs);
-    });
-  }
-});
+/**
+ * Main Initialization
+ */
+function init() {
+    const { startIndex, todayStr } = getCycleData();
 
-// --- SUPPORT LINK ---
-document.getElementById('support-link').addEventListener('click', (e) => {
-  e.preventDefault();
-  chrome.tabs.create({ url: "https://upilinks.in/payment-link/upi925459343" });
-});
+    // Load user progress from Browser Local Storage
+    let savedDate = localStorage.getItem('gyan_savedDate');
+    let clicks = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
 
+    // Reset progress if a new day has started
+    if (savedDate !== todayStr) {
+        clicks = 0;
+        localStorage.setItem('gyan_savedDate', todayStr);
+        localStorage.setItem('gyan_clickCount', '0');
+    }
+
+    // Show the current fact
+    updateUI(startIndex + clicks);
+    updateButtonAndProgress(clicks);
+
+    // Attach Event Listener to Button
+    const nextBtn = document.getElementById('next-btn');
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            let currentClicks = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
+
+            if (currentClicks < (DAILY_LIMIT - 1)) {
+                let newClicks = currentClicks + 1;
+                localStorage.setItem('gyan_clickCount', newClicks.toString());
+                
+                updateUI(startIndex + newClicks);
+                updateButtonAndProgress(newClicks);
+            }
+        });
+    }
+}
+
+// Run the app when the page is ready
 document.addEventListener('DOMContentLoaded', () => {
-  initializeDailyContent();
-  loadFavs();
+    // Check if data file is actually loaded
+    if (typeof gyanDatabase !== 'undefined') {
+        init();
+    } else {
+        const content = document.getElementById('card-content');
+        if (content) content.innerText = "Error: Data file not found. Please refresh.";
+    }
 });
