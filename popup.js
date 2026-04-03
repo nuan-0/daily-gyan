@@ -1,18 +1,20 @@
 /**
- * DAILY GYAN WEB APP LOGIC - STABLE VERSION
- * Built for @Important4Exams GitHub Pages
+ * DAILY GYAN WEB APP LOGIC - NAVIGATION VERSION
+ * Features: Forward/Back Navigation & 10-Card Daily Limit
+ * Built for @Important4Exams
  */
 
 // --- 1. CONFIGURATION ---
 const DAILY_LIMIT = 10;
-const LOOP_DAYS = 60; // 60 days * 10 cards = 600 total items
+const LOOP_DAYS = 60; 
+
+// Track the current position in the session
+let currentViewingIndex = 0; 
 
 /**
  * Updates the Visual Card, Colors, and Text
- * @param {number} globalIndex - The index (0-599) to pull from gyanDatabase
  */
 function updateUI(globalIndex) {
-    // Access the database (Checks both common variable names for safety)
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
     
     if (!db || !db[globalIndex]) {
@@ -22,31 +24,27 @@ function updateUI(globalIndex) {
 
     const item = db[globalIndex];
 
-    // A. UPDATE CATEGORY (Checks for 'category' or 'cat')
+    // Update Category
     const catElement = document.getElementById('category');
     if (catElement) {
         catElement.innerText = (item.category || item.cat || "GENERAL GYAN").toUpperCase();
     }
 
-    // B. UPDATE CONTENT (Checks for 'fact' or 'body' or 'title')
+    // Update Content
     const contentElement = document.getElementById('card-content');
     if (contentElement) {
         contentElement.innerText = item.fact || item.body || item.title || "Content Loading...";
     }
 
-    // C. UPDATE CARD COLOR (If defined in gyan_data.js, e.g., color: "#ffcccc")
+    // Update Card Color
     const cardElement = document.getElementById('gyan-card');
     if (cardElement) {
-        if (item.color) {
-            cardElement.style.backgroundColor = item.color;
-        } else {
-            cardElement.style.backgroundColor = "#ffffff"; // Default Professional White
-        }
+        cardElement.style.backgroundColor = item.color || "#ffffff";
     }
 }
 
 /**
- * Calculates the Day of the Year for the 60-day loop logic
+ * Calculates the Day of the Year for the 60-day loop
  */
 function getCycleData() {
     const now = new Date();
@@ -55,7 +53,6 @@ function getCycleData() {
     const oneDay = 1000 * 60 * 60 * 24;
     const dayOfYear = Math.floor(diff / oneDay);
 
-    // currentCycleDay will be 0 to 59
     const currentCycleDay = (dayOfYear - 1) % LOOP_DAYS;
     const startIndex = currentCycleDay * 10;
 
@@ -63,79 +60,103 @@ function getCycleData() {
 }
 
 /**
- * Updates Button Text and Progress Tracker (Card X of 10)
+ * Updates Button States and Progress Text
  */
-function updateButtonAndProgress(clicks) {
-    const btn = document.getElementById('next-btn');
+function updateButtonAndProgress(currentIndex, maxUnlocked) {
+    const nextBtn = document.getElementById('next-btn');
+    const backBtn = document.getElementById('back-btn');
     const progressText = document.getElementById('progress-text');
 
+    // Update Progress (e.g., Card 3 of 10)
     if (progressText) {
-        progressText.innerText = `Card ${clicks + 1} of ${DAILY_LIMIT} today`;
+        progressText.innerText = `CARD ${currentIndex + 1} OF ${DAILY_LIMIT}`;
     }
 
-    if (btn) {
-        if (clicks >= (DAILY_LIMIT - 1)) {
-            btn.disabled = true;
-            btn.innerText = "Daily Goal Reached! 🔒";
-            btn.style.opacity = "0.6";
+    // BACK BUTTON: Disable if we are at the very first card of the day
+    if (backBtn) {
+        backBtn.disabled = (currentIndex === 0);
+    }
+
+    // NEXT BUTTON: Handle Forward vs Unlock vs Lock
+    if (nextBtn) {
+        if (currentIndex < maxUnlocked) {
+            // User went back and is now going forward again
+            nextBtn.disabled = false;
+            nextBtn.innerText = "Forward →";
+        } else if (maxUnlocked >= (DAILY_LIMIT - 1)) {
+            // Daily limit reached
+            nextBtn.disabled = true;
+            nextBtn.innerText = "Goal Reached 🔒";
         } else {
-            btn.disabled = false;
-            btn.innerText = "Next Surprise →";
-            btn.style.opacity = "1";
+            // Standard next card unlock
+            nextBtn.disabled = false;
+            nextBtn.innerText = "Next Surprise →";
         }
     }
 }
 
 /**
- * Main Initialization Logic
+ * Initialize App
  */
 function init() {
     const { startIndex, todayStr } = getCycleData();
 
-    // WEB STORAGE (Using localStorage for GitHub Pages persistence)
+    // Load progress from LocalStorage
     let savedDate = localStorage.getItem('gyan_savedDate');
-    let clicks = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
+    let maxUnlocked = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
 
-    // Reset Progress if a new day has started
+    // Reset if it's a new day
     if (savedDate !== todayStr) {
-        clicks = 0;
+        maxUnlocked = 0;
         localStorage.setItem('gyan_savedDate', todayStr);
         localStorage.setItem('gyan_clickCount', '0');
     }
 
-    // Initial Load of the Card
-    updateUI(startIndex + clicks);
-    updateButtonAndProgress(clicks);
+    // Set initial viewing position to the furthest unlocked card
+    currentViewingIndex = maxUnlocked;
 
-    // Attach Event Listener to "Next" Button
-    const nextBtn = document.getElementById('next-btn');
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            let currentClicks = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
+    // Initial Load
+    updateUI(startIndex + currentViewingIndex);
+    updateButtonAndProgress(currentViewingIndex, maxUnlocked);
 
-            if (currentClicks < (DAILY_LIMIT - 1)) {
-                let newClicks = currentClicks + 1;
-                localStorage.setItem('gyan_clickCount', newClicks.toString());
-                
-                updateUI(startIndex + newClicks);
-                updateButtonAndProgress(newClicks);
-            }
-        });
-    }
+    // NEXT BUTTON CLICK
+    document.getElementById('next-btn').addEventListener('click', () => {
+        let latestMax = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
+
+        if (currentViewingIndex < latestMax) {
+            // Just moving forward through cards already seen
+            currentViewingIndex++;
+        } else if (latestMax < (DAILY_LIMIT - 1)) {
+            // Unlocking a brand new card for the day
+            latestMax++;
+            currentViewingIndex = latestMax;
+            localStorage.setItem('gyan_clickCount', latestMax.toString());
+        }
+
+        updateUI(startIndex + currentViewingIndex);
+        updateButtonAndProgress(currentViewingIndex, latestMax);
+    });
+
+    // BACK BUTTON CLICK
+    document.getElementById('back-btn').addEventListener('click', () => {
+        if (currentViewingIndex > 0) {
+            currentViewingIndex--;
+            const latestMax = parseInt(localStorage.getItem('gyan_clickCount')) || 0;
+            updateUI(startIndex + currentViewingIndex);
+            updateButtonAndProgress(currentViewingIndex, latestMax);
+        }
+    });
 }
 
-// Start once the page has loaded
+// Start once DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // 100ms delay ensures gyan_data.js is fully loaded in memory
+    // 100ms delay ensures data is ready
     setTimeout(() => {
         if (typeof gyanDatabase !== 'undefined' || typeof gyanData !== 'undefined') {
             init();
         } else {
             const content = document.getElementById('card-content');
-            if (content) {
-                content.innerText = "Error: Data file not found. Please refresh.";
-                console.error("Critical Error: gyanDatabase is not defined. Ensure gyan_data.js is loaded first.");
-            }
+            if (content) content.innerText = "Error: Data file not found. Please refresh.";
         }
     }, 100);
 });
