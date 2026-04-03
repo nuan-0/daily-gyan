@@ -2,12 +2,11 @@
  * Fact101 LOGIC - NAVIGATION & COLOR FIXED
  */
 
-// State variables moved to top for persistence
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// Vibrant Background Colors (High brightness)
+// High-Energy Attractive Colors
 const vibrantColors = ['#FFFFFF', '#E3F2FD', '#FFF9C4', '#F3E5F5', '#E8F5E9', '#FFF3E0'];
 
 function updateUI(globalIndex) {
@@ -15,12 +14,11 @@ function updateUI(globalIndex) {
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
-    
-    // Label as Fact101
+    // Force "Fact101" labeling
     document.getElementById('category').innerText = (item.category || item.cat || "Fact101").toUpperCase();
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
-    // Vibrant Color Change on Tap
+    // COLOR CHANGE ON TAP
     const card = document.getElementById('gyan-card');
     const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
     card.style.backgroundColor = color;
@@ -37,7 +35,7 @@ function updateState() {
 
     progress.innerText = `Fact101: ${currentViewingIndex + 1} OF 10`;
     
-    // BACK BUTTON FIX: Disabled only if at the first card
+    // BACK BUTTON FIX
     backBtn.disabled = (currentViewingIndex <= 0);
 
     // NEXT BUTTON LOGIC
