@@ -8,7 +8,7 @@
         :root {
             --primary: #2d3436;
             --glass: rgba(255, 255, 255, 0.35);
-            /* High Contrast 3D Shadows - NO MORE DIM LOOK */
+            /* High Contrast 3D Shadows - FIXES THE DIM LOOK */
             --card-shadow: 20px 20px 45px rgba(0,0,0,0.25);
             --light-glow: -12px -12px 30px rgba(255,255,255,0.95);
         }
@@ -26,11 +26,7 @@
             overflow: hidden;
         }
 
-        @keyframes gradientMove { 
-            0% { background-position: 0% 50%; } 
-            50% { background-position: 100% 50%; } 
-            100% { background-position: 0% 50%; } 
-        }
+        @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
         .app-container {
             width: 92%;
@@ -44,7 +40,7 @@
             border: 1px solid rgba(255,255,255,0.5);
         }
 
-        /* VIBRANT 3D MAIN BOX */
+        /* BRIGHT VIBRANT 3D MAIN BOX */
         #gyan-card {
             background-color: #ffffff; 
             border-radius: 35px;
@@ -93,7 +89,6 @@
         }
 
         .button-group { display: flex; gap: 15px; }
-        
         .btn-3d {
             border: none;
             padding: 18px;
@@ -110,6 +105,23 @@
         .btn-3d:active:not(:disabled) { transform: scale(0.94); box-shadow: none; }
         .btn-3d:disabled { opacity: 0.4; cursor: not-allowed; }
 
+        /* 3D PAYMENT BUTTON */
+        .support-btn {
+            margin-top: 30px;
+            display: inline-block;
+            background: #ffffff;
+            color: #2d3436;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+
+        .support-btn:active { transform: scale(0.95); }
+
         .footer { margin-top: 25px; font-size: 0.85rem; color: #2d3436; font-weight: 600; }
     </style>
 </head>
@@ -124,6 +136,11 @@
             <button id="back-btn" class="btn-3d">←</button>
             <button id="next-btn" class="btn-3d">Next Fact101 →</button>
         </div>
+        
+        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="support-btn">
+            ☕ Support @Important4Exams
+        </a>
+
         <div class="footer">Daily Gyan by <b>@Important4Exams</b></div>
     </div>
     <script src="gyan_data.js"></script>
