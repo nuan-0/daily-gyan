@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    :root { --glass: rgba(255, 255, 255, 0.2); --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); }
+    body { width: 350px; } to body { width: 100vw; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #e0e5ec; }
+    
+    /* 3D Glass Card */
+    .card { 
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: var(--shadow);
+      padding: 25px;
+      color: white;
+      min-height: 170px;
+      margin-bottom: 15px;
+      transition: 0.3s;
+    }
+
+    .tag { font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; background: rgba(0,0,0,0.25); padding: 5px 12px; border-radius: 50px; display: inline-block; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.1); }
+    h2 { margin: 0 0 10px 0; font-size: 22px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+    p { font-size: 15px; line-height: 1.5; font-weight: 500; margin: 0; }
+    
+    .status-bar { font-size: 12px; color: #666; margin-bottom: 10px; text-align: center; font-weight: 600; }
+
+    .nav-btns { display: flex; justify-content: space-between; gap: 15px; margin-top: 15px; }
+    button { 
+      cursor: pointer; border: none; border-radius: 14px; padding: 12px; font-weight: 700; 
+      box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #ffffff; transition: 0.2s;
+    }
+    button:active { box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff; transform: translateY(2px); }
+    
+    #next-btn { background: #2c3e50; color: white; flex-grow: 2; font-size: 14px; }
+    #next-btn:disabled { background: #95a5a6; cursor: not-allowed; box-shadow: none; opacity: 0.6; }
+    #fav-btn { background: #fff; color: #e74c3c; flex-grow: 1; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+
+    .support-link { 
+      display: block; margin-top: 25px; font-size: 13px; text-decoration: none; 
+      color: #2c3e50; text-align: center; padding: 12px; border-radius: 14px;
+      background: #e0e5ec; box-shadow: 4px 4px 10px #b8b9be, -4px -4px 10px #ffffff;
+      font-weight: bold;
+    }
+    
+    #fav-list { margin-top: 25px; padding-top: 15px; border-top: 2px solid #cfd8dc; }
+    #favs-ul { padding: 0; font-size: 13px; list-style: none; margin-top: 10px; }
+    .fav-item { background: white; margin-bottom: 8px; padding: 10px; border-radius: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
+    .remove-btn { color: #e74c3c; cursor: pointer; font-weight: bold; padding: 5px; }
+  </style>
+</head>
+<body>
+  <div id="gyan-card" class="card">
+    <span id="category" class="tag">Category</span>
+    <h2 id="title">Daily Gyan</h2>
+    <p id="content">Loading your daily revision...</p>
+  </div>
+
+  <div id="status-msg" class="status-bar">Post 1 of 10 today</div>
+
+  <div class="nav-btns">
+    <button id="fav-btn" title="Save Favorite">&#10084;</button>
+    <button id="next-btn">Next Surprise &#10141;</button>
+  </div>
+
+  <a href="https://upilinks.in/payment-link/upi925459343" id="support-link" class="support-link">
+    &#9749; Support my work with a tea!
+  </a>
+
+  <div id="fav-list">
+    <strong>&#11088; My Revision List</strong>
+    <ul id="favs-ul"></ul>
+  </div>
+
+  <script src="gyan_data.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
