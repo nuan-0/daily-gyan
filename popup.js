@@ -1,35 +1,46 @@
-// GLOBAL VARIABLES - Move outside to ensure they stay in memory
+/**
+ * Fact101 LOGIC - NAVIGATION & COLOR FIXED
+ */
+
+// State variables moved to top for persistence
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// Random colors for the 3D card experience
-const colors = ['#ffffff', '#fff5f5', '#f0fff4', '#fffaf0', '#f5f5ff', '#faf5ff'];
+// Vibrant Background Colors (High brightness)
+const vibrantColors = ['#FFFFFF', '#E3F2FD', '#FFF9C4', '#F3E5F5', '#E8F5E9', '#FFF3E0'];
 
 function updateUI(globalIndex) {
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
-    document.getElementById('category').innerText = (item.category || item.cat || "GYAN").toUpperCase();
+    
+    // Label as Fact101
+    document.getElementById('category').innerText = (item.category || item.cat || "Fact101").toUpperCase();
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
-    // CHANGE CARD COLOR ON EVERY TAP
+    // Vibrant Color Change on Tap
     const card = document.getElementById('gyan-card');
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    card.style.backgroundColor = randomColor;
+    const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+    card.style.backgroundColor = color;
+    
+    // 3D Pop Effect
+    card.style.transform = "scale(1.03)";
+    setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
 
-function updateButtons() {
+function updateState() {
     const nextBtn = document.getElementById('next-btn');
     const backBtn = document.getElementById('back-btn');
     const progress = document.getElementById('progress-text');
 
-    progress.innerText = `CARD ${currentViewingIndex + 1} OF 10`;
-
-    // Back button works if we aren't at the first card
+    progress.innerText = `Fact101: ${currentViewingIndex + 1} OF 10`;
+    
+    // BACK BUTTON FIX: Disabled only if at the first card
     backBtn.disabled = (currentViewingIndex <= 0);
 
+    // NEXT BUTTON LOGIC
     if (currentViewingIndex < maxUnlocked) {
         nextBtn.innerText = "Forward →";
         nextBtn.disabled = false;
@@ -37,10 +48,31 @@ function updateButtons() {
         nextBtn.innerText = "Goal Reached 🔒";
         nextBtn.disabled = true;
     } else {
-        nextBtn.innerText = "Next Surprise →";
+        nextBtn.innerText = "Next Fact101 →";
         nextBtn.disabled = false;
     }
 }
+
+// NAVIGATION HANDLERS
+document.getElementById('next-btn').onclick = function() {
+    if (currentViewingIndex < maxUnlocked) {
+        currentViewingIndex++;
+    } else if (maxUnlocked < 9) {
+        maxUnlocked++;
+        currentViewingIndex = maxUnlocked;
+        localStorage.setItem('gyan_clickCount', maxUnlocked.toString());
+    }
+    updateUI(startIndex + currentViewingIndex);
+    updateState();
+};
+
+document.getElementById('back-btn').onclick = function() {
+    if (currentViewingIndex > 0) {
+        currentViewingIndex--;
+        updateUI(startIndex + currentViewingIndex);
+        updateState();
+    }
+};
 
 function init() {
     const now = new Date();
@@ -59,30 +91,9 @@ function init() {
 
     currentViewingIndex = maxUnlocked;
     updateUI(startIndex + currentViewingIndex);
-    updateButtons();
+    updateState();
 }
 
-// ATTACH CLICKS DIRECTLY
-document.getElementById('next-btn').onclick = function() {
-    if (currentViewingIndex < maxUnlocked) {
-        currentViewingIndex++;
-    } else if (maxUnlocked < 9) {
-        maxUnlocked++;
-        currentViewingIndex = maxUnlocked;
-        localStorage.setItem('gyan_clickCount', maxUnlocked.toString());
-    }
-    updateUI(startIndex + currentViewingIndex);
-    updateButtons();
-};
-
-document.getElementById('back-btn').onclick = function() {
-    if (currentViewingIndex > 0) {
-        currentViewingIndex--;
-        updateUI(startIndex + currentViewingIndex);
-        updateButtons();
-    }
-};
-
 window.onload = function() {
-    setTimeout(init, 150);
+    setTimeout(init, 100);
 };
