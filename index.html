@@ -6,10 +6,11 @@
     <title>Daily Gyan - @Important4Exams</title>
     <style>
         :root {
+            /* Neumorphic Palette */
+            --bg: #e0e5ec;
             --primary: #2c3e50;
-            --accent: #3498db;
-            --glass: rgba(255, 255, 255, 0.88);
-            --shadow: 0 20px 40px rgba(0,0,0,0.15);
+            --shadow-dark: #a3b1c6;
+            --shadow-light: #ffffff;
         }
 
         /* 1. ANIMATED BACKGROUND */
@@ -20,149 +21,151 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientMove 15s ease infinite;
+            background-color: var(--bg);
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             overflow: hidden;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* 2. MAIN GLASS CONTAINER */
+        /* 2. MAIN APP CONTAINER */
         .app-container {
             width: 92%;
             max-width: 400px;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 40px;
-            padding: 35px 25px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255,255,255,0.4);
+            padding: 30px 20px;
             text-align: center;
             position: relative;
-            z-index: 10;
         }
 
-        /* 3. THE INTERACTIVE CARD */
+        /* 3. THE 3D NEUMORPHIC CARD (MIDDLE AREA) */
         #gyan-card {
-            background: #ffffff;
-            border-radius: 30px;
-            padding: 50px 20px;
-            min-height: 240px;
+            background-color: var(--bg);
+            border-radius: 40px;
+            padding: 55px 25px;
+            min-height: 280px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            box-shadow: inset 5px 5px 15px #f0f0f0, inset -5px -5px 15px #ffffff;
-            margin-bottom: 25px;
+            align-items: center;
+            /* Neumorphic "Pop" Shadows */
+            box-shadow: 18px 18px 30px var(--shadow-dark), 
+                       -18px -18px 30px var(--shadow-light);
+            margin-bottom: 40px;
             position: relative;
-            border: 1px solid #f1f1f1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.2s ease;
         }
 
-        /* Category Badge */
+        /* Category Badge - Floating 3D */
         #category {
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
+            top: -18px;
+            background: linear-gradient(145deg, #34495e, #2c3e50);
             color: #fff;
-            padding: 8px 20px;
+            padding: 10px 25px;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 1.5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
             text-transform: uppercase;
         }
 
-        /* Main Content */
+        /* Main Content Text Area */
+        .card-inner {
+            width: 100%;
+        }
+
         #card-content {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             line-height: 1.6;
-            color: #2c3e50;
+            color: #4a5568;
             font-weight: 600;
+            word-wrap: break-word;
         }
 
         /* 4. BUTTONS & UI */
         #progress-text {
             font-size: 0.85rem;
-            color: #555;
-            margin-bottom: 15px;
-            font-weight: 700;
+            color: #718096;
+            margin-bottom: 20px;
+            font-weight: 800;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .button-group {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             width: 100%;
+            margin-top: 10px;
         }
 
         .btn-common {
             border: none;
             padding: 18px;
-            border-radius: 22px;
+            border-radius: 20px;
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: all 0.2s ease;
+            /* Neumorphic Button Style */
+            box-shadow: 6px 6px 12px var(--shadow-dark), 
+                       -6px -6px 12px var(--shadow-light);
         }
 
         #back-btn {
-            background: #e0e6ed;
+            background: var(--bg);
             color: #7f8c8d;
             flex: 1;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         #next-btn {
             background: var(--primary);
             color: white;
             flex: 2;
-            box-shadow: 0 10px 20px rgba(44, 62, 80, 0.3);
+            box-shadow: 8px 8px 16px rgba(0,0,0,0.1), 
+                        -4px -4px 10px rgba(255,255,255,0.1);
         }
 
-        #back-btn:hover:not(:disabled) { background: #d1d8e0; }
-        #next-btn:hover:not(:disabled) { background: #34495e; transform: translateY(-2px); }
+        /* 3D Click Animation */
+        .btn-common:active:not(:disabled) {
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                        inset -4px -4px 8px var(--shadow-light);
+            transform: scale(0.97);
+        }
 
-        .btn-common:active:not(:disabled) { transform: translateY(1px); }
-        .btn-common:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-common:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
 
-        /* 5. FOOTER & BRANDING */
+        /* 5. FOOTER & SUPPORT */
         .support-btn {
-            margin-top: 25px;
+            margin-top: 35px;
             display: inline-block;
-            background: rgba(255,255,255,0.6);
-            color: #444;
+            background: var(--bg);
+            color: #555;
             text-decoration: none;
             padding: 12px 25px;
             border-radius: 18px;
             font-size: 0.85rem;
             font-weight: 600;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: background 0.2s;
+            box-shadow: 4px 4px 8px var(--shadow-dark), 
+                       -4px -4px 8px var(--shadow-light);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        .support-btn:hover { background: #fff; }
-
         .footer {
-            margin-top: 25px;
+            margin-top: 30px;
             font-size: 0.85rem;
-            color: #666;
+            color: #718096;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .status-dot {
@@ -187,11 +190,13 @@
 
         <div id="gyan-card">
             <span id="category">LOADING...</span>
-            <div id="card-content">Initialising your daily revision...</div>
+            <div class="card-inner">
+                <div id="card-content">Initialising your daily revision...</div>
+            </div>
         </div>
 
         <div class="button-group">
-            <button id="back-btn" class="btn-common" title="Previous Fact">←</button>
+            <button id="back-btn" class="btn-common">←</button>
             <button id="next-btn" class="btn-common">Next Surprise →</button>
         </div>
 
