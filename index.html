@@ -7,9 +7,10 @@
     <style>
         :root {
             --primary: #2d3436;
-            --glass: rgba(255, 255, 255, 0.3);
-            --card-shadow: 20px 20px 45px rgba(0,0,0,0.2);
-            --light-glow: -12px -12px 30px rgba(255,255,255,0.8);
+            --glass: rgba(255, 255, 255, 0.25);
+            /* High-Contrast 3D Shadows */
+            --outer-shadow: 20px 20px 60px rgba(0,0,0,0.3);
+            --inner-light: -10px -10px 25px rgba(255,255,255,0.9);
         }
 
         body {
@@ -31,113 +32,142 @@
             width: 92%;
             max-width: 400px;
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            border-radius: 40px;
+            backdrop-filter: blur(25px);
+            border-radius: 45px;
             padding: 35px 22px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
         }
 
+        /* THE MAIN 3D COLOR BOX */
         #gyan-card {
             background-color: #ffffff; 
-            border-radius: 35px;
+            border-radius: 40px;
             padding: 50px 25px;
             min-height: 280px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: var(--card-shadow), var(--light-glow);
+            /* Extra deep shadow for 3D pop */
+            box-shadow: 15px 15px 35px rgba(0,0,0,0.2), 
+                        inset 2px 2px 5px rgba(255,255,255,0.8);
             margin-bottom: 35px;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: background-color 0.6s ease, transform 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
         #category {
             position: absolute;
-            top: -18px;
+            top: -20px;
             background: var(--primary);
             color: #fff;
-            padding: 10px 25px;
+            padding: 12px 30px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 900;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
             text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
         }
 
         #card-content {
-            font-size: 1.45rem;
+            font-size: 1.5rem;
             line-height: 1.5;
             color: #1a202c; 
-            font-weight: 700;
+            font-weight: 800;
+            text-align: center;
         }
 
         #progress-text {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #2d3436;
-            margin-bottom: 20px;
-            font-weight: 800;
-            background: rgba(255,255,255,0.5);
+            margin-bottom: 25px;
+            font-weight: 900;
+            background: rgba(255,255,255,0.6);
             display: inline-block;
-            padding: 6px 18px;
-            border-radius: 12px;
+            padding: 8px 20px;
+            border-radius: 15px;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.05);
         }
 
-        .button-group { display: flex; gap: 15px; }
-        .btn-3d {
+        .button-group { display: flex; gap: 15px; width: 100%; }
+
+        /* LARGE BOLD 3D BACK ARROW BUTTON */
+        #back-btn {
+            flex: 1;
+            background: #ffffff;
             border: none;
-            padding: 18px;
-            border-radius: 20px;
+            border-radius: 25px;
+            font-size: 2.2rem; /* Massive Arrow */
+            font-weight: 900;
+            color: #2d3436;
+            cursor: pointer;
+            box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
+            transition: 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #next-btn {
+            flex: 2;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
             font-weight: 800;
             cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+            transition: 0.2s;
         }
 
-        /* Large attractive back arrow */
-        #back-btn { 
-            background: #ffffff; 
-            color: #2d3436; 
-            flex: 1; 
-            font-size: 1.5rem; 
-            line-height: 1;
-        }
-        
-        #next-btn { background: var(--primary); color: #fff; flex: 2; font-size: 1rem; }
-        
-        .btn-3d:active:not(:disabled) { transform: scale(0.94); box-shadow: none; }
-        .btn-3d:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-active:active { transform: scale(0.92); box-shadow: none; }
+        button:disabled { opacity: 0.3; cursor: not-allowed; }
 
+        /* COFFEE BUTTON FIXED */
         .support-btn {
             margin-top: 30px;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             background: #ffffff;
             color: #2d3436;
             text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            box-shadow: 10px 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.8);
         }
 
-        .footer { margin-top: 25px; font-size: 0.85rem; color: #2d3436; font-weight: 600; }
+        .footer { margin-top: 25px; font-size: 0.9rem; color: #2d3436; font-weight: 700; opacity: 0.8; }
     </style>
 </head>
 <body>
     <div class="app-container">
         <div id="progress-text">Fact101: 1 OF 10</div>
+        
         <div id="gyan-card">
             <span id="category">Fact101</span>
-            <div id="card-content">Initializing...</div>
+            <div id="card-content">Loading today's facts...</div>
         </div>
+
         <div class="button-group">
-            <button id="back-btn" class="btn-3d">🔙</button>
-            <button id="next-btn" class="btn-3d">Next Fact101 →</button>
+            <button id="back-btn" class="btn-active">⬅</button>
+            <button id="next-btn" class="btn-active">Next Fact101 →</button>
         </div>
-        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="support-btn">☕ Buy me a coffee</a>
+
+        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="support-btn">
+            ☕ Buy me a coffee
+        </a>
+
         <div class="footer">Daily Gyan by <b>@Important4Exams</b></div>
     </div>
     <script src="gyan_data.js"></script>
