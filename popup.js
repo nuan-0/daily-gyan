@@ -1,11 +1,12 @@
 /**
- * Fact101 LOGIC - 7 DAY SUCCESS CYCLE
+ * Fact101 Logic - Vibrant Color & 7-Day Cycle
  */
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-const brightColors = ['#FFFFFF', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0'];
+// Vibrant attractive colors
+const attractiveColors = ['#FFEBEE', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0'];
 
 // YOUR 7-DAY MESSAGE CYCLE
 const weeklyMessages = [
@@ -24,13 +25,20 @@ function updateUI(globalIndex) {
 
     const item = db[globalIndex];
     let catName = (item.category || item.cat || "Fact101").toUpperCase();
+    
+    // REPLACE "QUIZ" WITH "FACT101" ONLY
     if (catName.includes("QUIZ")) { catName = "FACT101"; }
 
     document.getElementById('category').innerText = catName;
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
+    // CHANGE TO ATTRACTIVE COLOR
     const card = document.getElementById('gyan-card');
-    card.style.backgroundColor = brightColors[Math.floor(Math.random() * brightColors.length)];
+    card.style.backgroundColor = attractiveColors[Math.floor(Math.random() * attractiveColors.length)];
+    
+    // 3D Bounce
+    card.style.transform = "scale(1.02)";
+    setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
 
 function updateState() {
@@ -47,22 +55,16 @@ function updateState() {
         btnText.innerText = "Forward →";
         dateText.style.display = "none";
         nextBtn.disabled = false;
+        nextBtn.style.opacity = "1";
     } else if (maxUnlocked >= 9) {
-        // --- 7 DAY LOGIC START ---
         const now = new Date();
-        const dayOfWeek = now.getDay(); // 0 (Sun) to 6 (Sat)
-        
-        btnText.innerText = weeklyMessages[dayOfWeek];
-        
-        // Show the small date underneath
+        btnText.innerText = weeklyMessages[now.getDay()];
         dateText.innerText = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
         dateText.style.display = "block";
-        
         nextBtn.disabled = true;
-        nextBtn.style.opacity = "0.8";
-        // --- 7 DAY LOGIC END ---
+        nextBtn.style.opacity = "0.7";
     } else {
-        btnText.innerText = "Next Fact101 →";
+        btnText.innerText = "Next Surprise →";
         dateText.style.display = "none";
         nextBtn.disabled = false;
         nextBtn.style.opacity = "1";
