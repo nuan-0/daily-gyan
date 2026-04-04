@@ -2,15 +2,16 @@ let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// 1. FORCED LIGHT PALETTE (Ensures the box is never dark)
-const lightPastelColors = [
-    '#FFFFFF', // Pure White
-    '#F9FAFB', // Ghost White
-    '#F0F9FF', // Soft Sky
-    '#F0FFF4', // Soft Mint
-    '#FFF5F5', // Soft Rose
-    '#FAF5FF', // Soft Lavender
-    '#FFFFF0'  // Ivory
+// 1. UPDATED PERFECT PASTEL PALETTE (Visible but Soft)
+const perfectPastels = [
+    '#D1F2EB', // Soft Mint
+    '#D6EAF8', // Soft Sky Blue
+    '#E8DAEF', // Soft Lavender
+    '#FADBD8', // Soft Rose
+    '#FEF9E7', // Soft Cream
+    '#EBEDEF', // Soft Silver
+    '#D5F5E3', // Soft Emerald
+    '#FCF3CF'  // Soft Peach
 ];
 
 // 2. YOUR 7-DAY MESSAGE CYCLE
@@ -30,16 +31,15 @@ function updateUI(globalIndex) {
 
     const item = db[globalIndex];
     
-    // Mapping your data fields: cat, title, body
     document.getElementById('category').innerText = (item.cat || "GENERAL GYAN").toUpperCase();
     document.getElementById('card-title').innerText = item.title || "";
     document.getElementById('card-content').innerText = item.body || "";
 
     const card = document.getElementById('gyan-card');
     
-    // THE FIX: Ignore item.color from data and use our Light Palette
-    const randomLightColor = lightPastelColors[Math.floor(Math.random() * lightPastelColors.length)];
-    card.style.backgroundColor = randomLightColor;
+    // Pick from the "Perfect Pastel" list
+    const chosenColor = perfectPastels[Math.floor(Math.random() * perfectPastels.length)];
+    card.style.backgroundColor = chosenColor;
     
     // 3D Pop Effect
     card.style.transform = "scale(1.02)";
