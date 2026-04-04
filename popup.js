@@ -2,26 +2,26 @@ let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// YOUR 7-DAY MESSAGE CYCLE (Sunday to Saturday)
-const weeklyMessages = [
-    "Daily Revision Done! 📚",      
-    "Daily Streak Maintained! 🔥",  
-    "Quota Complete ✍️",           
-    "Consistency Maintained 🔥",    
-    "Goal Reached 🔒",              
-    "Syllabus Covered ✅",          
-    "See You Tomorrow! 👋"          
+// 1. FORCED LIGHT PALETTE (Ensures the box is never dark)
+const lightPastelColors = [
+    '#FFFFFF', // Pure White
+    '#F9FAFB', // Ghost White
+    '#F0F9FF', // Soft Sky
+    '#F0FFF4', // Soft Mint
+    '#FFF5F5', // Soft Rose
+    '#FAF5FF', // Soft Lavender
+    '#FFFFF0'  // Ivory
 ];
 
-// LIGHTER PASTEL COLORS (For better text visibility)
-const vibrantColors = [
-    '#ffffff', // Pure White
-    '#F0FFF4', // Soft Mint
-    '#EBF8FF', // Pale Sky Blue
-    '#FFF5F5', // Soft Rose
-    '#FAF5FF', // Lavender Mist
-    '#FFFFF0', // Ivory
-    '#F0F4FF'  // Ghost White
+// 2. YOUR 7-DAY MESSAGE CYCLE
+const weeklyMessages = [
+    "Daily Revision Done! 📚",      // Sun
+    "Daily Streak Maintained! 🔥",  // Mon
+    "Quota Complete ✍️",           // Tue
+    "Consistency Maintained 🔥",    // Wed
+    "Goal Reached 🔒",              // Thu
+    "Syllabus Covered ✅",          // Fri
+    "See You Tomorrow! 👋"          // Sat
 ];
 
 function updateUI(globalIndex) {
@@ -30,15 +30,18 @@ function updateUI(globalIndex) {
 
     const item = db[globalIndex];
     
+    // Mapping your data fields: cat, title, body
     document.getElementById('category').innerText = (item.cat || "GENERAL GYAN").toUpperCase();
     document.getElementById('card-title').innerText = item.title || "";
     document.getElementById('card-content').innerText = item.body || "";
 
     const card = document.getElementById('gyan-card');
     
-    // This will now pick from the new LIGHTER list above
-    card.style.backgroundColor = item.color || vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+    // THE FIX: Ignore item.color from data and use our Light Palette
+    const randomLightColor = lightPastelColors[Math.floor(Math.random() * lightPastelColors.length)];
+    card.style.backgroundColor = randomLightColor;
     
+    // 3D Pop Effect
     card.style.transform = "scale(1.02)";
     setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
@@ -101,8 +104,8 @@ let touchstartX = 0;
 document.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, false);
 document.addEventListener('touchend', e => {
     let touchendX = e.changedTouches[0].screenX;
-    if (touchendX < touchstartX - 50) handleNext(); // Swipe Left
-    if (touchendX > touchstartX + 50) handleBack(); // Swipe Right
+    if (touchendX < touchstartX - 50) handleNext(); // Swipe Left to go Next
+    if (touchendX > touchstartX + 50) handleBack(); // Swipe Right to go Back
 }, false);
 
 // PC KEYBOARD SUPPORT
