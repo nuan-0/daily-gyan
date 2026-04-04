@@ -19,11 +19,18 @@ function updateUI(globalIndex) {
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
+    
+    // 1. Get Category
     let catName = (item.category || item.cat || "GENERAL GYAN").toUpperCase();
     
+    // 2. Get Title (New!)
+    let titleText = item.title || ""; 
+
     document.getElementById('category').innerText = catName;
+    document.getElementById('card-title').innerText = titleText; // Puts the title in the card
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
+    // 3. Dynamic Color & 3D Pop
     const card = document.getElementById('gyan-card');
     card.style.backgroundColor = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
     
