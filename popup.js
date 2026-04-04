@@ -2,16 +2,16 @@ let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// 1. UPDATED PERFECT PASTEL PALETTE (Visible but Soft)
-const perfectPastels = [
-    '#D1F2EB', // Soft Mint
-    '#D6EAF8', // Soft Sky Blue
-    '#E8DAEF', // Soft Lavender
-    '#FADBD8', // Soft Rose
-    '#FEF9E7', // Soft Cream
-    '#EBEDEF', // Soft Silver
-    '#D5F5E3', // Soft Emerald
-    '#FCF3CF'  // Soft Peach
+// 1. POWER PASTEL PALETTE (Vibrant but Light enough for Black Text)
+const powerPastels = [
+    '#A2D2FF', // Power Sky Blue
+    '#BDE0FE', // Light Azure
+    '#FFC8DD', // Candy Pink
+    '#FFAFCC', // Orchid Pink
+    '#CDB4DB', // Soft Grape
+    '#CAFFBF', // Electric Mint
+    '#FDFFB6', // Bright Canary
+    '#FFD6A5'  // Soft Mango
 ];
 
 // 2. YOUR 7-DAY MESSAGE CYCLE
@@ -25,6 +25,7 @@ const weeklyMessages = [
     "See You Tomorrow! 👋"          // Sat
 ];
 
+
 function updateUI(globalIndex) {
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
     if (!db || !db[globalIndex]) return;
@@ -37,8 +38,8 @@ function updateUI(globalIndex) {
 
     const card = document.getElementById('gyan-card');
     
-    // Pick from the "Perfect Pastel" list
-    const chosenColor = perfectPastels[Math.floor(Math.random() * perfectPastels.length)];
+    // Pick from the "Power Pastel" list for a vivid look
+    const chosenColor = powerPastels[Math.floor(Math.random() * powerPastels.length)];
     card.style.backgroundColor = chosenColor;
     
     // 3D Pop Effect
