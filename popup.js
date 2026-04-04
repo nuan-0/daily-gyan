@@ -1,12 +1,22 @@
 /**
- * Fact101 LOGIC - FINAL VERSION
+ * Fact101 LOGIC - 7 DAY SUCCESS CYCLE
  */
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// Vibrant attractive colors
-const colors = ['#FFFFFF', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0'];
+const brightColors = ['#FFFFFF', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0'];
+
+// YOUR 7-DAY MESSAGE CYCLE
+const weeklyMessages = [
+    "See You Tomorrow! 👋",      // Sunday (Index 0)
+    "Daily Streak Maintained! 🔥", // Monday (Index 1)
+    "Daily Revision Done! 📚",    // Tuesday (Index 2)
+    "Syllabus Covered ✅",        // Wednesday (Index 3)
+    "Consistency Maintained 🔥",  // Thursday (Index 4)
+    "Quota Complete ✍️",          // Friday (Index 5)
+    "Goal Reached 🔒"             // Saturday (Index 6)
+];
 
 function updateUI(globalIndex) {
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
@@ -14,20 +24,19 @@ function updateUI(globalIndex) {
 
     const item = db[globalIndex];
     let catName = (item.category || item.cat || "Fact101").toUpperCase();
-    
-    // QUIZ REPLACEMENT
     if (catName.includes("QUIZ")) { catName = "FACT101"; }
 
     document.getElementById('category').innerText = catName;
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
-    // CHANGE COLOR ON EVERY CLICK
     const card = document.getElementById('gyan-card');
-    card.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    card.style.backgroundColor = brightColors[Math.floor(Math.random() * brightColors.length)];
 }
 
 function updateState() {
     const nextBtn = document.getElementById('next-btn');
+    const btnText = document.getElementById('btn-text');
+    const dateText = document.getElementById('finish-date');
     const backBtn = document.getElementById('back-btn');
     const progress = document.getElementById('progress-text');
 
@@ -35,14 +44,28 @@ function updateState() {
     backBtn.disabled = (currentViewingIndex <= 0);
 
     if (currentViewingIndex < maxUnlocked) {
-        nextBtn.innerText = "Forward →";
+        btnText.innerText = "Forward →";
+        dateText.style.display = "none";
         nextBtn.disabled = false;
     } else if (maxUnlocked >= 9) {
-        nextBtn.innerText = "Goal Reached 🔒";
+        // --- 7 DAY LOGIC START ---
+        const now = new Date();
+        const dayOfWeek = now.getDay(); // 0 (Sun) to 6 (Sat)
+        
+        btnText.innerText = weeklyMessages[dayOfWeek];
+        
+        // Show the small date underneath
+        dateText.innerText = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        dateText.style.display = "block";
+        
         nextBtn.disabled = true;
+        nextBtn.style.opacity = "0.8";
+        // --- 7 DAY LOGIC END ---
     } else {
-        nextBtn.innerText = "Next Fact101 →";
+        btnText.innerText = "Next Fact101 →";
+        dateText.style.display = "none";
         nextBtn.disabled = false;
+        nextBtn.style.opacity = "1";
     }
 }
 
