@@ -7,23 +7,29 @@ let maxUnlocked = 0;
 let startIndex = 0;
 
 // High-Energy Attractive Colors
-const vibrantColors = ['#FFFFFF', '#E3F2FD', '#FFF9C4', '#F3E5F5', '#E8F5E9', '#FFF3E0'];
+const brightColors = ['#FFFFFF', '#E3F2FD', '#FFF9C4', '#F3E5F5', '#E8F5E9', '#FFF3E0'];
 
 function updateUI(globalIndex) {
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
-    // Force "Fact101" labeling
-    document.getElementById('category').innerText = (item.category || item.cat || "Fact101").toUpperCase();
+    let catName = (item.category || item.cat || "Fact101").toUpperCase();
+    
+    // REPLACE "QUIZ" WITH "FACT101"
+    if (catName === "QUIZ") {
+        catName = "FACT101";
+    }
+
+    document.getElementById('category').innerText = catName;
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
-    // COLOR CHANGE ON TAP
+    // Vibrant Color Change
     const card = document.getElementById('gyan-card');
-    const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+    const color = brightColors[Math.floor(Math.random() * brightColors.length)];
     card.style.backgroundColor = color;
     
-    // 3D Pop Effect
+    // Bounce Animation
     card.style.transform = "scale(1.03)";
     setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
@@ -34,11 +40,8 @@ function updateState() {
     const progress = document.getElementById('progress-text');
 
     progress.innerText = `Fact101: ${currentViewingIndex + 1} OF 10`;
-    
-    // BACK BUTTON FIX
     backBtn.disabled = (currentViewingIndex <= 0);
 
-    // NEXT BUTTON LOGIC
     if (currentViewingIndex < maxUnlocked) {
         nextBtn.innerText = "Forward →";
         nextBtn.disabled = false;
@@ -51,7 +54,6 @@ function updateState() {
     }
 }
 
-// NAVIGATION HANDLERS
 document.getElementById('next-btn').onclick = function() {
     if (currentViewingIndex < maxUnlocked) {
         currentViewingIndex++;
