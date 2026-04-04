@@ -2,8 +2,7 @@ let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-const vibrantColors = ['#FFEBEE', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0', '#E0F7FA'];
-
+// YOUR 7-DAY MESSAGE CYCLE (Sunday to Saturday)
 const weeklyMessages = [
     "Daily Revision Done! 📚",      
     "Daily Streak Maintained! 🔥",  
@@ -15,28 +14,19 @@ const weeklyMessages = [
 ];
 
 function updateUI(globalIndex) {
-    // 1. Get your data
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
     
-    // 2. THIS IS THE FIX: We use 'item.body' because that is what you wrote in your JS file
-    let catName = (item.cat || "GENERAL GYAN").toUpperCase();
-    let titleText = item.title || ""; 
-    let bodyText = item.body || ""; // Matches your "body" field
+    // Mapping your data exactly
+    document.getElementById('category').innerText = (item.cat || "GENERAL GYAN").toUpperCase();
+    document.getElementById('card-title').innerText = item.title || "";
+    document.getElementById('card-content').innerText = item.body || "";
 
-    // 3. Push to Screen
-    document.getElementById('category').innerText = catName;
-    
-    // Ensure this ID exists in your index.html!
-    const titleElement = document.getElementById('card-title');
-    if(titleElement) titleElement.innerText = titleText; 
-
-    document.getElementById('card-content').innerText = bodyText;
-
-    // 4. Use YOUR custom colors from the data (e.g., #3498db)
     const card = document.getElementById('gyan-card');
+    
+    // Use the color from your JS file (e.g., #3498db)
     card.style.backgroundColor = item.color || "#ffffff";
     
     // 3D Pop Effect
@@ -97,22 +87,16 @@ function handleBack() {
 document.getElementById('next-btn').onclick = handleNext;
 document.getElementById('back-btn').onclick = handleBack;
 
-// --- SWIPE FEATURE (MOBILE) ---
+// MOBILE SWIPE SUPPORT
 let touchstartX = 0;
-let touchendX = 0;
-
-document.addEventListener('touchstart', e => {
-    touchstartX = e.changedTouches[0].screenX;
-}, false);
-
+document.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, false);
 document.addEventListener('touchend', e => {
-    touchendX = e.changedTouches[0].screenX;
-    const swipeThreshold = 50;
-    if (touchendX < touchstartX - swipeThreshold) handleNext(); // Swipe Left
-    if (touchendX > touchstartX + swipeThreshold) handleBack(); // Swipe Right
+    let touchendX = e.changedTouches[0].screenX;
+    if (touchendX < touchstartX - 50) handleNext(); // Swipe Left
+    if (touchendX > touchstartX + 50) handleBack(); // Swipe Right
 }, false);
 
-// --- KEYBOARD FEATURE (PC) ---
+// PC KEYBOARD SUPPORT
 document.addEventListener('keydown', e => {
     if (e.key === "ArrowRight") handleNext();
     if (e.key === "ArrowLeft") handleBack();
@@ -134,5 +118,4 @@ function init() {
     updateUI(startIndex + currentViewingIndex);
     updateState();
 }
-
 window.onload = function() { setTimeout(init, 100); };
