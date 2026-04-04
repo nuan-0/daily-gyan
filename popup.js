@@ -1,12 +1,21 @@
 /**
- * Fact101 LOGIC - NAVIGATION & REPLACEMENT FIXED
+ * Fact101 LOGIC - NAVIGATION & COLOR SYNC
  */
 
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-const brightColors = ['#FFFFFF', '#E3F2FD', '#FFF9C4', '#F3E5F5', '#E8F5E9', '#FFF3E0'];
+// High-Energy Vibrant Colors for the 3D Box
+const vibrantColors = [
+    '#FFEBEE', // Soft Red
+    '#E3F2FD', // Sky Blue
+    '#F1F8E9', // Mint Green
+    '#FFFDE7', // Bright Yellow
+    '#F3E5F5', // Lavender
+    '#E0F7FA', // Cyan
+    '#FFFFFF'  // Pure White
+];
 
 function updateUI(globalIndex) {
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
@@ -15,18 +24,18 @@ function updateUI(globalIndex) {
     const item = db[globalIndex];
     let catName = (item.category || item.cat || "Fact101").toUpperCase();
     
-    // STRICT REPLACEMENT: If the word is QUIZ, force it to FACT101
-    if (catName.includes("QUIZ")) {
-        catName = "FACT101";
-    }
+    // STRICT "QUIZ" TO "FACT101" OVERRIDE
+    if (catName.includes("QUIZ")) { catName = "FACT101"; }
 
     document.getElementById('category').innerText = catName;
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
+    // CHANGE COLOR ON TAP
     const card = document.getElementById('gyan-card');
-    const color = brightColors[Math.floor(Math.random() * brightColors.length)];
-    card.style.backgroundColor = color;
+    const randomColor = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+    card.style.backgroundColor = randomColor;
     
+    // 3D Bounce Animation
     card.style.transform = "scale(1.03)";
     setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
@@ -37,8 +46,11 @@ function updateState() {
     const progress = document.getElementById('progress-text');
 
     progress.innerText = `Fact101: ${currentViewingIndex + 1} OF 10`;
+    
+    // Back button state
     backBtn.disabled = (currentViewingIndex <= 0);
 
+    // Next button state
     if (currentViewingIndex < maxUnlocked) {
         nextBtn.innerText = "Forward →";
         nextBtn.disabled = false;
