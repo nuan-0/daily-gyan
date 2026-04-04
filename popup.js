@@ -61,7 +61,6 @@ function updateState() {
     }
 }
 
-// Logic for Next
 function handleNext() {
     if (currentViewingIndex < maxUnlocked) {
         currentViewingIndex++;
@@ -74,7 +73,6 @@ function handleNext() {
     updateState();
 }
 
-// Logic for Back
 function handleBack() {
     if (currentViewingIndex > 0) {
         currentViewingIndex--;
@@ -86,21 +84,9 @@ function handleBack() {
 document.getElementById('next-btn').onclick = handleNext;
 document.getElementById('back-btn').onclick = handleBack;
 
-// --- SWIPE FEATURE START ---
+// --- SWIPE FEATURE (MOBILE) ---
 let touchstartX = 0;
 let touchendX = 0;
-
-function checkDirection() {
-    const swipeThreshold = 50; // Minimum pixels to count as a swipe
-    if (touchendX < touchstartX - swipeThreshold) {
-        // Swipe Left -> Trigger Next
-        handleNext();
-    }
-    if (touchendX > touchstartX + swipeThreshold) {
-        // Swipe Right -> Trigger Back
-        handleBack();
-    }
-}
 
 document.addEventListener('touchstart', e => {
     touchstartX = e.changedTouches[0].screenX;
@@ -108,9 +94,16 @@ document.addEventListener('touchstart', e => {
 
 document.addEventListener('touchend', e => {
     touchendX = e.changedTouches[0].screenX;
-    checkDirection();
+    const swipeThreshold = 50;
+    if (touchendX < touchstartX - swipeThreshold) handleNext(); // Swipe Left
+    if (touchendX > touchstartX + swipeThreshold) handleBack(); // Swipe Right
 }, false);
-// --- SWIPE FEATURE END ---
+
+// --- KEYBOARD FEATURE (PC) ---
+document.addEventListener('keydown', e => {
+    if (e.key === "ArrowRight") handleNext();
+    if (e.key === "ArrowLeft") handleBack();
+});
 
 function init() {
     const now = new Date();
