@@ -8,7 +8,7 @@ const gyanDatabase = [
   { id: 6, cat: "Motivation", title: "Deep Work", body: "Cal Newport's concept: Focus without distraction on a cognitively demanding task.", color: "#34495e" },
   { id: 7, cat: "Math", title: "Prime Numbers", body: "2 is the only even prime number; all others are odd.", color: "#1abc9c" },
   { id: 8, cat: "Awareness", title: "Cyber Safety", body: "Never click 'Shortened Links' in SMS claiming you won a lottery.", color: "#c0392b" },
-  { id: 9, cat: "Quiz", title: "DPSP Source", body: "Directive Principles of State Policy were borrowed from Ireland.", color: "#16a085" },
+  { id: 9, cat: "Fact101", title: "DPSP Source", body: "Directive Principles of State Policy were borrowed from Ireland.", color: "#16a085" },
   { id: 10, cat: "CA 2026", title: "Hydrogen Train", body: "India's first H-train trials began on Jind-Sonipat route in 2026.", color: "#27ae60" },
 
   // DAY 2: Executive & Environment
@@ -21,7 +21,7 @@ const gyanDatabase = [
   { id: 17, cat: "Did You Know?", title: "Zero", body: "Indian mathematician Aryabhata used zero as a placeholder/digit.", color: "#34495e" },
   { id: 18, cat: "CA 2026", title: "DGCA Chief", body: "Vir Vikram Yadav is currently leading the aviation regulatory body.", color: "#16a085" },
   { id: 19, cat: "Awareness", title: "UPI Safety", body: "Reminder: You do NOT need a PIN to RECEIVE money via UPI.", color: "#c0392b" },
-  { id: 20, cat: "Quiz", title: "Largest State", body: "Rajasthan is India's largest state by total land area.", color: "#8e44ad" },
+  { id: 20, cat: "Fact101", title: "Largest State", body: "Rajasthan is India's largest state by total land area.", color: "#8e44ad" },
 
   // DAY 3: Rights & Revolts
   { id: 21, cat: "Polity", title: "Article 21", body: "Right to Protection of Life and Personal Liberty (Fundamental Right).", color: "#3498db" },
@@ -32,7 +32,7 @@ const gyanDatabase = [
   { id: 26, cat: "Motivation", title: "Eat the Frog", body: "Do your hardest, most important task first thing in the morning.", color: "#34495e" },
   { id: 27, cat: "Math", title: "Fibonacci", body: "Sequence where each number is the sum of the two preceding ones.", color: "#1abc9c" },
   { id: 28, cat: "Awareness", title: "Phishing", body: "Fraudulent emails that look official to steal your bank passwords.", color: "#c0392b" },
-  { id: 29, cat: "Quiz", title: "Silicon Valley", body: "Bengaluru is widely known as the Silicon Valley of India.", color: "#16a085" },
+  { id: 29, cat: "Fact101", title: "Silicon Valley", body: "Bengaluru is widely known as the Silicon Valley of India.", color: "#16a085" },
   { id: 30, cat: "Science", title: "Inertia", body: "Newton's 1st Law: An object stays at rest unless acted on by a force.", color: "#e74c3c" },
 
   // DAY 4: Amendments & Rivers
@@ -45,7 +45,7 @@ const gyanDatabase = [
   { id: 37, cat: "Did You Know?", title: "Shampoo", body: "The concept of shampooing originated in India using herbs/berries.", color: "#7f8c8d" },
   { id: 38, cat: "CA 2026", title: "Gaganyaan", body: "ISRO's 2026 goal for the first manned space flight mission.", color: "#16a085" },
   { id: 39, cat: "Awareness", title: "Blue Light", body: "Screens emit blue light that can disrupt your sleep cycle (Melatonin).", color: "#2c3e50" },
-  { id: 40, cat: "Quiz", title: "High Court", body: "The Calcutta High Court is the oldest High Court in India.", color: "#8e44ad" },
+  { id: 40, cat: "Fact101", title: "High Court", body: "The Calcutta High Court is the oldest High Court in India.", color: "#8e44ad" },
 
   // DAY 5: Local Government & Space
   { id: 41, cat: "Polity", title: "73rd Amendment", body: "Gave constitutional status to Panchayati Raj institutions.", color: "#3498db" },
@@ -56,7 +56,7 @@ const gyanDatabase = [
   { id: 46, cat: "Logic", title: "Odd One Out", body: "Identifying a member of a set that is different from others.", color: "#1abc9c" },
   { id: 47, cat: "Math", title: "Pythagoras", body: "In a right triangle: a² + b² = c² (Hypotenuse calculation).", color: "#2ecc71" },
   { id: 48, cat: "Awareness", title: "Incognito", body: "Incognito mode hides history from the device, but NOT from the ISP.", color: "#c0392b" },
-  { id: 49, cat: "Quiz", title: "Tiger State", body: "Madhya Pradesh holds the record for the highest tiger population.", color: "#16a085" },
+  { id: 49, cat: "Fact101", title: "Tiger State", body: "Madhya Pradesh holds the record for the highest tiger population.", color: "#16a085" },
   { id: 50, cat: "CA 2026", title: "UCC Bill", body: "Gujarat recently moved toward implementing the Uniform Civil Code.", color: "#d35400" },
 
   // DAY 6: Parliament & Energy
@@ -69,7 +69,7 @@ const gyanDatabase = [
   { id: 57, cat: "Did You Know?", title: "Chess", body: "The game of Chess originated in India (formerly called Chaturanga).", color: "#d35400" },
   { id: 58, cat: "CA 2026", title: "Solar Power", body: "India targets 500GW non-fossil fuel energy capacity by 2030.", color: "#f1c40f" },
   { id: 59, cat: "Awareness", title: "Dark Mode", body: "Reduces eye strain in low light and saves battery on OLED screens.", color: "#2c3e50" },
-  { id: 60, cat: "Quiz", title: "Smallest State", body: "Goa is the smallest state in India by total area.", color: "#16a085" },
+  { id: 60, cat: "Fact101", title: "Smallest State", body: "Goa is the smallest state in India by total area.", color: "#16a085" },
 
   // DAY 7: Judiciary & Biology
   { id: 61, cat: "Polity", title: "Article 124", body: "Establishment and Constitution of the Supreme Court of India.", color: "#3498db" },
@@ -80,7 +80,7 @@ const gyanDatabase = [
   { id: 66, cat: "Math", title: "Unit Digit", body: "The last digit of 2^4 is 6. Useful in solving complex powers.", color: "#1abc9c" },
   { id: 67, cat: "Motivation", title: "Growth Mindset", body: "Believing abilities can be developed through hard work.", color: "#34495e" },
   { id: 68, cat: "Awareness", title: "VPN", body: "Virtual Private Network: encrypts your internet traffic for privacy.", color: "#c0392b" },
-  { id: 69, cat: "Quiz", title: "Yellow River", body: "The Huang He is called the 'Sorrow of China' due to floods.", color: "#16a085" },
+  { id: 69, cat: "Fact101", title: "Yellow River", body: "The Huang He is called the 'Sorrow of China' due to floods.", color: "#16a085" },
   { id: 70, cat: "CA 2026", title: "Semiconductors", body: "India’s project 'ISM' aims to become a global hub for chip making.", color: "#d35400" },
 
   // DAY 8: Duties & Climate
@@ -93,7 +93,7 @@ const gyanDatabase = [
   { id: 77, cat: "Did You Know?", title: "First Univ.", body: "Takshashila is considered one of the world's first universities.", color: "#7f8c8d" },
   { id: 78, cat: "CA 2026", title: "G20", body: "India continues to influence global policy following its 2023 presidency.", color: "#34495e" },
   { id: 79, cat: "Awareness", title: "2-Factor Auth", body: "Always use 2FA for Gmail/Social media to prevent hacking.", color: "#c0392b" },
-  { id: 80, cat: "Quiz", title: "First Citizen", body: "The President of India is considered the 'First Citizen'.", color: "#3498db" },
+  { id: 80, cat: "Fact101", title: "First Citizen", body: "The President of India is considered the 'First Citizen'.", color: "#3498db" },
 
   // DAY 9: Rights & Cells
   { id: 81, cat: "Polity", title: "Article 32", body: "Right to Constitutional Remedies: 'Heart and Soul' of Constitution.", color: "#3498db" },
@@ -104,7 +104,7 @@ const gyanDatabase = [
   { id: 86, cat: "Motivation", title: "Flow State", body: "Being fully immersed and energized in what you are doing.", color: "#34495e" },
   { id: 87, cat: "Math", title: "Rational Numbers", body: "Any number that can be expressed as a fraction p/q.", color: "#1abc9c" },
   { id: 88, cat: "Awareness", title: "Social Media", body: "Doomscrolling (endless scrolling) increases anxiety/stress.", color: "#c0392b" },
-  { id: 89, cat: "Quiz", title: "Golden Fiber", body: "Jute is known as the 'Golden Fiber' of India.", color: "#16a085" },
+  { id: 89, cat: "Fact101", title: "Golden Fiber", body: "Jute is known as the 'Golden Fiber' of India.", color: "#16a085" },
   { id: 90, cat: "CA 2026", title: "Digital Rupee", body: "RBI’s CBDC (Central Bank Digital Currency) expanding nationwide.", color: "#27ae60" },
 
   // DAY 10: Revision & Governance
@@ -117,7 +117,7 @@ const gyanDatabase = [
   { id: 97, cat: "Did You Know?", title: "Number System", body: "The modern decimal system was developed in India (Hindu-Arabic).", color: "#7f8c8d" },
   { id: 98, cat: "CA 2026", title: "S&P Outlook", body: "Projected 7% growth for India, making it the fastest-growing major economy.", color: "#34495e" },
   { id: 99, cat: "Awareness", title: "Posture", body: "Keep your spine straight while studying to avoid long-term back pain.", color: "#c0392b" },
-  { id: 100, cat: "Quiz", title: "NITI Aayog", body: "Replaced the Planning Commission; PM is the ex-officio Chairman.", color: "#16a085" },
+  { id: 100, cat: "Fact101", title: "NITI Aayog", body: "Replaced the Planning Commission; PM is the ex-officio Chairman.", color: "#16a085" },
 
 
 // DAY 11: Space & Judiciary
@@ -129,7 +129,7 @@ const gyanDatabase = [
   { id: 106, cat: "Logic", title: "Blood Relations", body: "Identifying relationships based on generational trees and gender cues.", color: "#8e44ad" },
   { id: 107, cat: "CA 2026", title: "Naxal-Free India", body: "On March 31, 2026, India officially declared its 'Naxal-free' status.", color: "#c0392b" },
   { id: 108, cat: "Motivation", title: "Pomo-doro", body: "Focus for 25 mins, rest for 5. It trains your brain to stay sharp.", color: "#34495e" },
-  { id: 109, cat: "Quiz", title: "Oldest HC", body: "The Calcutta High Court (est. 1862) is the oldest in India.", color: "#16a085" },
+  { id: 109, cat: "Fact101", title: "Oldest HC", body: "The Calcutta High Court (est. 1862) is the oldest in India.", color: "#16a085" },
   { id: 110, cat: "Awareness", title: "Phishing", body: "Fake links that steal data. Always check the URL before entering passwords.", color: "#d35400" },
 
   // DAY 12: Finance & Freedom
@@ -142,7 +142,7 @@ const gyanDatabase = [
   { id: 117, cat: "Did You Know?", title: "Shampoo", body: "Derived from 'Champo' (Sanskrit); the concept originated in India.", color: "#7f8c8d" },
   { id: 118, cat: "CA 2026", title: "Bhavasagara", body: "India's 1st National Repository for Deep-Sea Fauna (Kochi, 2026).", color: "#34495e" },
   { id: 119, cat: "Awareness", title: "SIM-Binding", body: "New 2026 OTT rule: Apps must link to active SIMs to curb cybercrime.", color: "#c0392b" },
-  { id: 120, cat: "Quiz", title: "Silicon Valley", body: "Bengaluru is the tech hub known as India's Silicon Valley.", color: "#16a085" },
+  { id: 120, cat: "Fact101", title: "Silicon Valley", body: "Bengaluru is the tech hub known as India's Silicon Valley.", color: "#16a085" },
 
   // DAY 13: Environment & Evolution
   { id: 121, cat: "Polity", title: "Article 360", body: "Financial Emergency: Has never been proclaimed in India yet.", color: "#3498db" },
@@ -154,7 +154,7 @@ const gyanDatabase = [
   { id: 127, cat: "Math", title: "Divisibility 11", body: "(Sum of odd digits) - (Sum of even digits) = 0 or multiple of 11.", color: "#1abc9c" },
   { id: 128, cat: "CA 2026", title: "SDG Dashboard", body: "MoSPI launched a new unified dashboard to track India's progress in 2026.", color: "#2980b9" },
   { id: 129, cat: "Awareness", title: "Dark Mode", body: "Reduces blue light strain and saves battery on OLED screens.", color: "#2c3e50" },
-  { id: 130, cat: "Quiz", title: "Tiger State", body: "Madhya Pradesh has the highest tiger population in India.", color: "#d35400" },
+  { id: 130, cat: "Fact101", title: "Tiger State", body: "Madhya Pradesh has the highest tiger population in India.", color: "#d35400" },
 
   // DAY 14: Culture & Constitutional Bodies
   { id: 131, cat: "Polity", title: "Article 315", body: "Constitutional provision for UPSC and State PSCs.", color: "#3498db" },
@@ -166,7 +166,7 @@ const gyanDatabase = [
   { id: 137, cat: "Did You Know?", title: "Chess", body: "The game originated in India, known as 'Chaturanga' in Sanskrit.", color: "#d35400" },
   { id: 138, cat: "CA 2026", title: "Coal-to-Gas", body: "Odisha got India's 1st indigenous coal-to-ammonium nitrate project (2026).", color: "#7f8c8d" },
   { id: 139, cat: "Awareness", title: "VPN", body: "Virtual Private Network: Encrypts data to protect your IP address.", color: "#c0392b" },
-  { id: 140, cat: "Quiz", title: "Largest Delta", body: "Ganga-Brahmaputra Delta is the largest in the world.", color: "#16a085" },
+  { id: 140, cat: "Fact101", title: "Largest Delta", body: "Ganga-Brahmaputra Delta is the largest in the world.", color: "#16a085" },
 
   // DAY 15: Amendments & Astronomy
   { id: 141, cat: "Polity", title: "42nd Amendment", body: "Known as 'Mini Constitution'; added 'Socialist' & 'Secular' to Preamble.", color: "#2980b9" },
@@ -178,7 +178,7 @@ const gyanDatabase = [
   { id: 147, cat: "Motivation", title: "80/20 Rule", body: "Pareto Principle: 20% of your efforts bring 80% of your results.", color: "#34495e" },
   { id: 148, cat: "CA 2026", title: "Solar Goal", body: "India aiming for 500 GW of non-fossil fuel capacity by 2030.", color: "#f39c12" },
   { id: 149, cat: "Awareness", title: "Incognito", body: "Browsing 'Incognito' does NOT hide your data from your ISP or Employer.", color: "#c0392b" },
-  { id: 150, cat: "Quiz", title: "First Citizen", body: "The President of India is called the First Citizen of the country.", color: "#3498db" },
+  { id: 150, cat: "Fact101", title: "First Citizen", body: "The President of India is called the First Citizen of the country.", color: "#3498db" },
 
   // DAY 16: Parliament & Particles
   { id: 151, cat: "Polity", title: "Article 110", body: "Definition of Money Bills. Speaker's decision on this is final.", color: "#3498db" },
@@ -190,7 +190,7 @@ const gyanDatabase = [
   { id: 157, cat: "Did You Know?", title: "Shakuntala Devi", body: "The 'Human Computer' who could calculate 13-digit multiplication in seconds.", color: "#d35400" },
   { id: 158, cat: "CA 2026", title: "Green Card", body: "Uttarakhand launched fitness Green Cards for Char Dham vehicles (2026).", color: "#2ecc71" },
   { id: 159, cat: "Awareness", title: "2FA", body: "Two-Factor Authentication: The best way to prevent Gmail/X hacks.", color: "#c0392b" },
-  { id: 160, cat: "Quiz", title: "Smallest State", body: "Goa is the smallest state in India by total area.", color: "#16a085" },
+  { id: 160, cat: "Fact101", title: "Smallest State", body: "Goa is the smallest state in India by total area.", color: "#16a085" },
 
   // DAY 17: Local Govt & Biology
   { id: 161, cat: "Polity", title: "73rd Amendment", body: "Gave constitutional status to Panchayati Raj (Village Councils).", color: "#2980b9" },
@@ -202,7 +202,7 @@ const gyanDatabase = [
   { id: 167, cat: "Motivation", title: "Growth Mindset", body: "The belief that you can improve skills with effort and learning.", color: "#34495e" },
   { id: 168, cat: "CA 2026", title: "Army Vice Chief", body: "Lt Gen Dhiraj Seth assumed charge as 49th Vice Chief (April 2026).", color: "#16a085" },
   { id: 169, cat: "Awareness", title: "Post-Naxal Dev.", body: "2026 focus: Establishing schools/hospitals in former Red Corridor districts.", color: "#c0392b" },
-  { id: 170, cat: "Quiz", title: "Daughter of Ganga", body: "River Yamuna is the largest tributary of the Ganga.", color: "#3498db" },
+  { id: 170, cat: "Fact101", title: "Daughter of Ganga", body: "River Yamuna is the largest tributary of the Ganga.", color: "#3498db" },
 
   // DAY 18: Duties & Climate
   { id: 171, cat: "Polity", title: "Article 51A", body: "Lists the 11 Fundamental Duties. (Based on Swaran Singh Committee).", color: "#3498db" },
@@ -214,7 +214,7 @@ const gyanDatabase = [
   { id: 177, cat: "Did You Know?", title: "Nalanda", body: "One of the world's oldest residential universities (5th Century AD).", color: "#d35400" },
   { id: 178, cat: "CA 2026", title: "RBL Bank Stake", body: "RBI approved Emirates NBD’s 60% stake acquisition in RBL Bank (2026).", color: "#7f8c8d" },
   { id: 179, cat: "Awareness", title: "Blue Card", body: "Foreign cars now need 'Blue Cards' for eco-sensitive Himalayan zones (2026).", color: "#2ecc71" },
-  { id: 180, cat: "Quiz", title: "National Anthem", body: "Written by Rabindranath Tagore; first sung in 1911 Calcutta session.", color: "#3498db" },
+  { id: 180, cat: "Fact101", title: "National Anthem", body: "Written by Rabindranath Tagore; first sung in 1911 Calcutta session.", color: "#3498db" },
 
   // DAY 19: Rights & Cells
   { id: 181, cat: "Polity", title: "Article 32", body: "Right to Constitutional Remedies. Called the 'Heart and Soul' by Ambedkar.", color: "#3498db" },
@@ -226,7 +226,7 @@ const gyanDatabase = [
   { id: 187, cat: "Math", title: "Square of 25", body: "Multiplication trick: 2x3=6, then add 25 = 625.", color: "#1abc9c" },
   { id: 188, cat: "CA 2026", title: "Candidate 2026", body: "Praggnanandhaa made a strong start at the Candidates Chess tourney (2026).", color: "#16a085" },
   { id: 189, cat: "Awareness", title: "SWM Rules 2026", body: "New rules: Wet, Dry, Sanitary, and Special care waste segregation.", color: "#2ecc71" },
-  { id: 190, cat: "Quiz", title: "Golden Fiber", body: "Jute is known as the Golden Fiber due to its high value.", color: "#16a085" },
+  { id: 190, cat: "Fact101", title: "Golden Fiber", body: "Jute is known as the Golden Fiber due to its high value.", color: "#16a085" },
 
   // DAY 20: Revision & Governance
   { id: 191, cat: "Polity", title: "NITI Aayog", body: "Replaced Planning Commission (2015); it is a 'Think Tank'.", color: "#2980b9" },
@@ -238,7 +238,7 @@ const gyanDatabase = [
   { id: 197, cat: "Did You Know?", title: "Number System", body: "Decimal system and Place value were created in India.", color: "#7f8c8d" },
   { id: 198, cat: "CA 2026", title: "Antariksh Startups", body: "Selected space startups to get investment from Antariksh Fund in FY2027.", color: "#34495e" },
   { id: 199, cat: "Awareness", title: "Posture", body: "Lower back support is key during long sittings to avoid sciatica.", color: "#c0392b" },
-  { id: 200, cat: "Quiz", title: "First PM", body: "Jawaharlal Nehru was the longest-serving Prime Minister of India.", color: "#16a085" },
+  { id: 200, cat: "Fact101", title: "First PM", body: "Jawaharlal Nehru was the longest-serving Prime Minister of India.", color: "#16a085" },
 
 // DAY 21: International Relations & Space
   { id: 201, cat: "Polity", title: "Article 51", body: "Directive Principle: Promotion of international peace and security.", color: "#3498db" },
@@ -249,7 +249,7 @@ const gyanDatabase = [
   { id: 206, cat: "Logic", title: "Directions", body: "Shadow trick: In the morning, a person's shadow is always to the West.", color: "#8e44ad" },
   { id: 207, cat: "CA 2026", title: "6G Testbed", body: "India successfully launched its 100th 6G R&D testbed in April 2026.", color: "#34495e" },
   { id: 208, cat: "Motivation", title: "Feynman Tech", body: "Explain a concept to a 5-year-old. If you can't, you don't know it.", color: "#d35400" },
-  { id: 209, cat: "Quiz", title: "Oldest Veda", body: "Rigveda is the oldest of the four Vedas (written in Vedic Sanskrit).", color: "#16a085" },
+  { id: 209, cat: "Fact101", title: "Oldest Veda", body: "Rigveda is the oldest of the four Vedas (written in Vedic Sanskrit).", color: "#16a085" },
   { id: 210, cat: "Awareness", title: "Juice Jacking", body: "2026 Alert: Avoid public USB charging stations; hackers can steal data.", color: "#c0392b" },
 
   // DAY 22: Rights & Rivers
@@ -262,7 +262,7 @@ const gyanDatabase = [
   { id: 217, cat: "Did You Know?", title: "Yoga Origin", body: "Yoga dates back 5,000 years to the Indus-Saraswati civilization.", color: "#7f8c8d" },
   { id: 218, cat: "CA 2026", title: "Bharat-AIR", body: "2026: India's first AI-driven air quality prediction system launched.", color: "#16a085" },
   { id: 119, cat: "Awareness", title: "Digital Will", body: "2026 Trend: Setting up 'Legacy Contacts' on social media for after death.", color: "#c0392b" },
-  { id: 220, cat: "Quiz", title: "Ganga Origin", body: "Ganga originates as Bhagirathi from the Gangotri Glacier.", color: "#3498db" },
+  { id: 220, cat: "Fact101", title: "Ganga Origin", body: "Ganga originates as Bhagirathi from the Gangotri Glacier.", color: "#3498db" },
 
   // DAY 23: Environment & Local Bodies
   { id: 221, cat: "Polity", title: "74th Amendment", body: "Gave constitutional status to Urban Local Bodies (Municipalities).", color: "#3498db" },
@@ -274,7 +274,7 @@ const gyanDatabase = [
   { id: 227, cat: "Math", title: "Ratio Trick", body: "If A:B = 2:3 and B:C = 4:5, then A:B:C = 8:12:15.", color: "#1abc9c" },
   { id: 228, cat: "CA 2026", title: "Semicon India", body: "April 2026: India's 1st mega-semiconductor fab began production in Dholera.", color: "#2980b9" },
   { id: 229, cat: "Awareness", title: "RFID Tags", body: "How Fastag works: uses Radio Frequency to scan/deduct toll money.", color: "#2c3e50" },
-  { id: 230, cat: "Quiz", title: "Pink City", body: "Jaipur is known as the Pink City because of its distinct architecture.", color: "#d35400" },
+  { id: 230, cat: "Fact101", title: "Pink City", body: "Jaipur is known as the Pink City because of its distinct architecture.", color: "#d35400" },
 
   // DAY 24: Culture & Bodies
   { id: 231, cat: "Polity", title: "CAG of India", body: "Article 148: Guardian of the public purse; audits all Govt spending.", color: "#3498db" },
@@ -286,7 +286,7 @@ const gyanDatabase = [
   { id: 237, cat: "Did You Know?", title: "Snakes & Ladders", body: "Originated in India as 'Moksha Patam' to teach morality to kids.", color: "#d35400" },
   { id: 238, cat: "CA 2026", title: "INS Arighat", body: "2026: India's 2nd Arihant-class nuclear sub actively patrolling.", color: "#7f8c8d" },
   { id: 239, cat: "Awareness", title: "QR Fraud", body: "Warning: Scanning a QR code is ONLY for SNELLING money, not receiving.", color: "#c0392b" },
-  { id: 240, cat: "Quiz", title: "Brahmaputra Name", body: "In Tibet, the Brahmaputra is known as the Tsangpo.", color: "#16a085" },
+  { id: 240, cat: "Fact101", title: "Brahmaputra Name", body: "In Tibet, the Brahmaputra is known as the Tsangpo.", color: "#16a085" },
 
   // DAY 25: Amendments & Energy
   { id: 241, cat: "Polity", title: "61st Amendment", body: "Lowered the voting age from 21 to 18 years (1989).", color: "#2980b9" },
@@ -298,7 +298,7 @@ const gyanDatabase = [
   { id: 247, cat: "Motivation", title: "Kaizen", body: "The Japanese philosophy of continuous, tiny improvements every day.", color: "#34495e" },
   { id: 248, cat: "CA 2026", title: "Digital Health", body: "April 2026: 95% of Indians now have an ABHA (Digital Health) ID.", color: "#f39c12" },
   { id: 249, cat: "Awareness", title: "Dark Patterns", body: "2026 law: Websites can't use trick designs to make you buy more.", color: "#c0392b" },
-  { id: 250, cat: "Quiz", title: "Smallest Planet", body: "Mercury is the smallest planet in our solar system.", color: "#3498db" },
+  { id: 250, cat: "Fact101", title: "Smallest Planet", body: "Mercury is the smallest planet in our solar system.", color: "#3498db" },
 
   // DAY 26: Parliament & Particles
   { id: 251, cat: "Polity", title: "Article 108", body: "Provision for Joint Sitting of both Houses of Parliament.", color: "#3498db" },
@@ -310,7 +310,7 @@ const gyanDatabase = [
   { id: 257, cat: "Did You Know?", title: "First Satellite", body: "Aryabhata (1975) was India's first satellite, launched by USSR.", color: "#d35400" },
   { id: 258, cat: "CA 2026", title: "Holo-Display", body: "2026: India's 1st holographic traffic signals tested in Bengaluru.", color: "#2ecc71" },
   { id: 259, cat: "Awareness", title: "Cookie Consent", body: "Reject 'Third-party' cookies to stop advertisers from tracking you.", color: "#c0392b" },
-  { id: 260, cat: "Quiz", title: "Iron Man", body: "Sardar Vallabhbhai Patel is known as the Iron Man of India.", color: "#16a085" },
+  { id: 260, cat: "Fact101", title: "Iron Man", body: "Sardar Vallabhbhai Patel is known as the Iron Man of India.", color: "#16a085" },
 
   // DAY 27: Bodies & Biology
   { id: 261, cat: "Polity", title: "Article 76", body: "Attorney General of India: The highest law officer in the country.", color: "#2980b9" },
@@ -322,7 +322,7 @@ const gyanDatabase = [
   { id: 267, cat: "Motivation", title: "Pareto", body: "The 80/20 rule: 20% of your syllabus will give 80% of exam marks.", color: "#34495e" },
   { id: 268, cat: "CA 2026", title: "eVTOL", body: "2026: Trials for India's 1st Electric Flying Taxis began in Chennai.", color: "#16a085" },
   { id: 269, cat: "Awareness", title: "Deepfake Law", body: "2026: India passed the AI Accountability Act to stop deepfake crimes.", color: "#c0392b" },
-  { id: 270, cat: "Quiz", title: "Red River", body: "The Brahmaputra is often called the Red River due to its silt.", color: "#3498db" },
+  { id: 270, cat: "Fact101", title: "Red River", body: "The Brahmaputra is often called the Red River due to its silt.", color: "#3498db" },
 
   // DAY 28: Duties & Climate
   { id: 271, cat: "Polity", title: "Article 21A", body: "Right to Education: Free and compulsory education (6-14 years).", color: "#3498db" },
@@ -334,7 +334,7 @@ const gyanDatabase = [
   { id: 277, cat: "Did You Know?", title: "First Printing", body: "First printing press in India was brought by Portuguese (Goa, 1556).", color: "#d35400" },
   { id: 278, cat: "CA 2026", title: "Green Bonds", body: "2026: India raised $10B via Green Bonds for renewable energy.", color: "#7f8c8d" },
   { id: 279, cat: "Awareness", title: "OLED Burn-in", body: "Keep brightness low on static screens to avoid permanent image ghosting.", color: "#2ecc71" },
-  { id: 280, cat: "Quiz", title: "Missile Man", body: "Dr. A.P.J. Abdul Kalam is known as the Missile Man of India.", color: "#3498db" },
+  { id: 280, cat: "Fact101", title: "Missile Man", body: "Dr. A.P.J. Abdul Kalam is known as the Missile Man of India.", color: "#3498db" },
 
   // DAY 29: Rights & Planets
   { id: 281, cat: "Polity", title: "Article 368", body: "Grants Parliament the power to amend the Constitution.", color: "#3498db" },
@@ -346,7 +346,7 @@ const gyanDatabase = [
   { id: 287, cat: "Math", title: "LCM of Primes", body: "The LCM of any two prime numbers is simply their product (e.g., 3 & 7 is 21).", color: "#1abc9c" },
   { id: 288, cat: "CA 2026", title: "Antariksh-1", body: "2026: India launched its 1st private Space Station module 'Antariksh-1'.", color: "#16a085" },
   { id: 289, cat: "Awareness", title: "Smart Home", body: "Change default passwords on smart cameras to prevent hackers.", color: "#2ecc71" },
-  { id: 290, cat: "Quiz", title: "Oldest Range", body: "Aravalli Range is the oldest fold mountain range in India.", color: "#16a085" },
+  { id: 290, cat: "Fact101", title: "Oldest Range", body: "Aravalli Range is the oldest fold mountain range in India.", color: "#16a085" },
 
   // DAY 30: Revision & Governance
   { id: 291, cat: "Polity", title: "Writ of Habeas Corpus", body: "Court order to produce a detained person to check if arrest is legal.", color: "#2980b9" },
@@ -358,7 +358,7 @@ const gyanDatabase = [
   { id: 297, cat: "Did You Know?", title: "First University", body: "Takshashila (600 BCE) is considered the world's 1st university.", color: "#7f8c8d" },
   { id: 298, cat: "CA 2026", title: "Ind-USA Pact", body: "2026: Major drone technology transfer agreement signed with USA.", color: "#34495e" },
   { id: 299, cat: "Awareness", title: "E-Waste 2026", body: "Donate old phones to certified recyclers; don't throw them in trash.", color: "#c0392b" },
-  { id: 300, cat: "Quiz", title: "Largest Ocean", body: "The Pacific Ocean is the largest and deepest ocean on Earth.", color: "#16a085" },
+  { id: 300, cat: "Fact101", title: "Largest Ocean", body: "The Pacific Ocean is the largest and deepest ocean on Earth.", color: "#16a085" },
 
 // DAY 31: Medieval & Space Law
   { id: 301, cat: "Polity", title: "Article 262", body: "Adjudication of disputes relating to waters of inter-State rivers.", color: "#3498db" },
@@ -369,7 +369,7 @@ const gyanDatabase = [
   { id: 306, cat: "Logic", title: "Seating", body: "In circular seating facing center: Left is Clockwise, Right is Anti-clockwise.", color: "#8e44ad" },
   { id: 307, cat: "CA 2026", title: "Space Law", body: "India passed the 'National Space Act 2026' to regulate private satellite launches.", color: "#34495e" },
   { id: 308, cat: "Motivation", title: "Pareto", body: "Identify the 20% of your syllabus that accounts for 80% of exam questions.", color: "#d35400" },
-  { id: 309, cat: "Quiz", title: "Oldest Epic", body: "The Ramayana and Mahabharata are the world's longest and oldest epics.", color: "#16a085" },
+  { id: 309, cat: "Fact101", title: "Oldest Epic", body: "The Ramayana and Mahabharata are the world's longest and oldest epics.", color: "#16a085" },
   { id: 310, cat: "Awareness", title: "SIM Swap", body: "2026 Alert: If your phone loses signal suddenly, check for unauthorized SIM swaps.", color: "#c0392b" },
 
   // DAY 32: Rights & Resources
@@ -382,7 +382,7 @@ const gyanDatabase = [
   { id: 317, cat: "Did You Know?", title: "First Stamp", body: "The first postage stamp in India was the 'Scinde Dawk' issued in 1852.", color: "#7f8c8d" },
   { id: 318, cat: "CA 2026", title: "6G Launch", body: "PM announced India's first 6G hyper-speed network pilot in Delhi (April 2026).", color: "#16a085" },
   { id: 319, cat: "Awareness", title: "AI Voice", body: "2026 Scam: AI can mimic a family member's voice. Always use a 'Secret Word' to verify.", color: "#c0392b" },
-  { id: 320, cat: "Quiz", title: "Largest Planet", body: "Jupiter is the largest planet; it has the shortest day in the solar system.", color: "#3498db" },
+  { id: 320, cat: "Fact101", title: "Largest Planet", body: "Jupiter is the largest planet; it has the shortest day in the solar system.", color: "#3498db" },
 
   // DAY 33: Finance & Environment
   { id: 321, cat: "Polity", title: "Article 243", body: "The basic constitutional article defining Panchayats and Municipalities.", color: "#3498db" },
@@ -394,7 +394,7 @@ const gyanDatabase = [
   { id: 327, cat: "Math", title: "Compound Interest", body: "CI = P[(1 + r/100)^n - 1]. Known as the '8th wonder' for wealth growth.", color: "#1abc9c" },
   { id: 328, cat: "CA 2026", title: "Project Kusha", body: "India's long-range air defense system (LR-SAM) successfully tested in 2026.", color: "#2980b9" },
   { id: 329, cat: "Awareness", title: "Passkeys", body: "2026 Trend: Move from passwords to Passkeys (biometrics) for better security.", color: "#2c3e50" },
-  { id: 330, cat: "Quiz", title: "Himalayas", body: "Fold mountains formed by the collision of Indian and Eurasian plates.", color: "#d35400" },
+  { id: 330, cat: "Fact101", title: "Himalayas", body: "Fold mountains formed by the collision of Indian and Eurasian plates.", color: "#d35400" },
 
   // DAY 34: Bodies & Battles
   { id: 331, cat: "Polity", title: "Article 165", body: "Advocate General for the State: The state's counterpart to the Attorney General.", color: "#3498db" },
@@ -406,7 +406,7 @@ const gyanDatabase = [
   { id: 337, cat: "Did You Know?", title: "First Bridge", body: "The Howrah Bridge in Kolkata is the world's 6th longest cantilever bridge.", color: "#d35400" },
   { id: 338, cat: "CA 2026", title: "Global Biofuel", body: "2026: India became the lead producer in the Global Biofuel Alliance.", color: "#7f8c8d" },
   { id: 339, cat: "Awareness", title: "Public WiFi", body: "Never use public WiFi for banking. Hackers use 'Man-in-the-middle' attacks.", color: "#c0392b" },
-  { id: 340, cat: "Quiz", title: "Deepest Point", body: "Mariana Trench in the Pacific Ocean is the deepest point on Earth.", color: "#16a085" },
+  { id: 340, cat: "Fact101", title: "Deepest Point", body: "Mariana Trench in the Pacific Ocean is the deepest point on Earth.", color: "#16a085" },
 
   // DAY 35: Amendments & Agriculture
   { id: 341, cat: "Polity", title: "52nd Amendment", body: "Anti-Defection Law: Added the 10th Schedule to the Constitution (1985).", color: "#2980b9" },
@@ -418,7 +418,7 @@ const gyanDatabase = [
   { id: 347, cat: "Motivation", title: "The Dip", body: "Seth Godin: Everything worth doing has a 'Dip'—a hard part where most quit.", color: "#34495e" },
   { id: 348, cat: "CA 2026", title: "K-Ride", body: "Bengaluru Suburban Rail Project (K-Ride) phase 1 opened in April 2026.", color: "#f39c12" },
   { id: 349, cat: "Awareness", title: "Cookie Stealing", body: "2026 Hack: Stealing session cookies allows hackers to login without 2FA.", color: "#c0392b" },
-  { id: 350, cat: "Quiz", title: "Oldest Planet", body: "Jupiter is the oldest planet, formed just after the Sun.", color: "#3498db" },
+  { id: 350, cat: "Fact101", title: "Oldest Planet", body: "Jupiter is the oldest planet, formed just after the Sun.", color: "#3498db" },
 
   // DAY 36: Parliament & Proteins
   { id: 351, cat: "Polity", title: "Article 249", body: "Power of Parliament to legislate on State List subjects in national interest.", color: "#3498db" },
@@ -430,7 +430,7 @@ const gyanDatabase = [
   { id: 357, cat: "Did You Know?", title: "First Newspaper", body: "Hicky's Bengal Gazette (1780) was the first newspaper printed in India.", color: "#d35400" },
   { id: 358, cat: "CA 2026", title: "Global Gateway", body: "EU and India signed major infra connectivity pact under Global Gateway (2026).", color: "#2ecc71" },
   { id: 359, cat: "Awareness", title: "Cloud Storage", body: "Never store unencrypted passwords in simple text files on the Cloud.", color: "#c0392b" },
-  { id: 360, cat: "Quiz", title: "Longest River", body: "The Nile is the longest river in the world (approx 6,650 km).", color: "#16a085" },
+  { id: 360, cat: "Fact101", title: "Longest River", body: "The Nile is the longest river in the world (approx 6,650 km).", color: "#16a085" },
 
   // DAY 37: States & DNA
   { id: 361, cat: "Polity", title: "Article 371", body: "Special provisions for various states like Nagaland, Assam, and Manipur.", color: "#2980b9" },
@@ -442,7 +442,7 @@ const gyanDatabase = [
   { id: 367, cat: "Motivation", title: "Grit", body: "Angela Duckworth: Passion + Perseverance for long-term goals.", color: "#34495e" },
   { id: 368, cat: "CA 2026", title: "Lithium Mine", body: "India’s first large-scale lithium mining started in Jammu & Kashmir (2026).", color: "#16a085" },
   { id: 369, cat: "Awareness", title: "IoT Security", body: "2026: Always update the firmware of smart bulbs/speakers to avoid hacks.", color: "#c0392b" },
-  { id: 370, cat: "Quiz", title: "Dead Sea", body: "The lowest point on Earth's land surface; so salty that fish cannot live.", color: "#3498db" },
+  { id: 370, cat: "Fact101", title: "Dead Sea", body: "The lowest point on Earth's land surface; so salty that fish cannot live.", color: "#3498db" },
 
   // DAY 38: Local Govt & Ecology
   { id: 371, cat: "Polity", title: "Article 243K", body: "State Election Commission: Responsible for Panchayat and Municipal polls.", color: "#3498db" },
@@ -454,7 +454,7 @@ const gyanDatabase = [
   { id: 377, cat: "Did You Know?", title: "First Train", body: "1853: First passenger train ran between Bori Bunder (Mumbai) and Thane.", color: "#d35400" },
   { id: 378, cat: "CA 2026", title: "Bhashini", body: "2026: India's AI translation tool 'Bhashini' now supports 22 languages live.", color: "#7f8c8d" },
   { id: 379, cat: "Awareness", title: "E-Rupee", body: "Offline CBDC (Digital Rupee) launched in 2026 for rural areas without net.", color: "#2ecc71" },
-  { id: 380, cat: "Quiz", title: "Largest Desert", body: "Antarctic Desert is the largest; Sahara is the largest hot desert.", color: "#3498db" },
+  { id: 380, cat: "Fact101", title: "Largest Desert", body: "Antarctic Desert is the largest; Sahara is the largest hot desert.", color: "#3498db" },
 
   // DAY 39: Rights & Planets
   { id: 381, cat: "Polity", title: "Article 352", body: "National Emergency: Proclaimed by President on grounds of War/Armed Revolt.", color: "#3498db" },
@@ -466,7 +466,7 @@ const gyanDatabase = [
   { id: 387, cat: "Math", title: "Pythagorean", body: "Triplets: (3,4,5), (5,12,13), (8,15,17). Memorize for fast geometry.", color: "#1abc9c" },
   { id: 388, cat: "CA 2026", title: "Carbon-Capture", body: "India’s 1st industrial carbon-capture plant opened in Jamnagar (2026).", color: "#16a085" },
   { id: 389, cat: "Awareness", title: "Vishing", body: "Voice Phishing: Scammers call claiming to be your bank to get your OTP.", color: "#2ecc71" },
-  { id: 390, cat: "Quiz", title: "Ring of Fire", body: "Zone in Pacific Ocean with most of world's earthquakes and volcanoes.", color: "#16a085" },
+  { id: 390, cat: "Fact101", title: "Ring of Fire", body: "Zone in Pacific Ocean with most of world's earthquakes and volcanoes.", color: "#16a085" },
 
   // DAY 40: Revision & Governance
   { id: 391, cat: "Polity", title: "Adjournment Sine Die", body: "Terminating a sitting of Parliament for an indefinite period.", color: "#2980b9" },
@@ -478,7 +478,7 @@ const gyanDatabase = [
   { id: 397, cat: "Did You Know?", title: "Diamond Origin", body: "Until the 1700s, India was the world's only known source of diamonds.", color: "#7f8c8d" },
   { id: 398, cat: "CA 2026", title: "One-Nation-One-Id", body: "2026: APAAR ID for students integrated into all national degrees/results.", color: "#34495e" },
   { id: 399, cat: "Awareness", title: "Li-Ion Life", body: "Keep your phone battery between 20% and 80% to extend its total lifespan.", color: "#c0392b" },
-  { id: 400, cat: "Quiz", title: "Smallest Ocean", body: "The Arctic Ocean is the smallest and shallowest of the five oceans.", color: "#16a085" },
+  { id: 400, cat: "Fact101", title: "Smallest Ocean", body: "The Arctic Ocean is the smallest and shallowest of the five oceans.", color: "#16a085" },
 
 // DAY 41: Authorities & Quantum
   { id: 401, cat: "Polity", title: "Article 76", body: "Attorney General: The highest law officer in India, appointed by the President.", color: "#3498db" },
@@ -489,7 +489,7 @@ const gyanDatabase = [
   { id: 406, cat: "Logic", title: "Calendars", body: "An ordinary year has 1 odd day; a Leap year has 2 odd days.", color: "#8e44ad" },
   { id: 407, cat: "CA 2026", title: "DPDP Act", body: "Digital Personal Data Protection rules fully enforced across all Indian apps (2026).", color: "#34495e" },
   { id: 408, cat: "Motivation", title: "Active Recall", body: "Testing yourself instead of re-reading. It’s the #1 way to remember syllabus.", color: "#d35400" },
-  { id: 409, cat: "Quiz", title: "First Census", body: "First non-synchronous census (1872) under Lord Mayo; first synchronous (1881).", color: "#16a085" },
+  { id: 409, cat: "Fact101", title: "First Census", body: "First non-synchronous census (1872) under Lord Mayo; first synchronous (1881).", color: "#16a085" },
   { id: 410, cat: "Awareness", title: "E-Sim", body: "2026 Trend: Phones moving to E-Sims only; no physical slot to prevent theft-tracking.", color: "#c0392b" },
 
   // DAY 42: Commissions & Culture
@@ -502,7 +502,7 @@ const gyanDatabase = [
   { id: 417, cat: "Did You Know?", title: "Snakes & Ladders", body: "Originally called 'Moksha Patam' to teach kids about Karma and Rebirth.", color: "#7f8c8d" },
   { id: 118, cat: "CA 2026", title: "Bharat-GPU", body: "India's first indigenous high-performance GPU cluster launched for AI (2026).", color: "#34495e" },
   { id: 419, cat: "Awareness", title: "AI Deepfakes", body: "2026 Warning: Look for unnatural eye-blinking or blurred edges to spot fake videos.", color: "#c0392b" },
-  { id: 420, cat: "Quiz", title: "Silicon Valley", body: "Bengaluru (Bangalore) is the Silicon Valley and IT capital of India.", color: "#16a085" },
+  { id: 420, cat: "Fact101", title: "Silicon Valley", body: "Bengaluru (Bangalore) is the Silicon Valley and IT capital of India.", color: "#16a085" },
 
   // DAY 43: Trade & Environment
   { id: 421, cat: "Polity", title: "Article 312", body: "Grants Rajya Sabha the power to create new All-India Services.", color: "#3498db" },
@@ -514,7 +514,7 @@ const gyanDatabase = [
   { id: 427, cat: "Math", title: "Cyclicity", body: "Powers of 2 repeat unit digits every 4 steps (2, 4, 8, 6).", color: "#1abc9c" },
   { id: 428, cat: "CA 2026", title: "PM Surya Ghar", body: "2026 Update: 10 Million Indian homes now powered by free solar rooftop electricity.", color: "#2980b9" },
   { id: 429, cat: "Awareness", title: "Passkeys", body: "2026: Biometric Passkeys have officially replaced passwords for Google/X logins.", color: "#2c3e50" },
-  { id: 430, cat: "Quiz", title: "Tiger Census", body: "Every 4 years, India conducts its national tiger survey (NTCA).", color: "#d35400" },
+  { id: 430, cat: "Fact101", title: "Tiger Census", body: "Every 4 years, India conducts its national tiger survey (NTCA).", color: "#d35400" },
 
   // DAY 44: Tribes & Battles
   { id: 431, cat: "Polity", title: "Article 148", body: "CAG (Comptroller and Auditor General): The Guardian of the Public Purse.", color: "#3498db" },
@@ -526,7 +526,7 @@ const gyanDatabase = [
   { id: 437, cat: "Did You Know?", title: "First Bridge", body: "The Bogibeel Bridge in Assam is India's longest rail-cum-road bridge.", color: "#d35400" },
   { id: 438, cat: "CA 2026", title: "Bharat-Gen", body: "India launched its own multi-modal GenAI model for 22 Indian languages (2026).", color: "#7f8c8d" },
   { id: 439, cat: "Awareness", title: "Cookie-Theft", body: "New 2026 malware steals browser 'sessions'. Never save login on public PCs.", color: "#c0392b" },
-  { id: 440, cat: "Quiz", title: "Smallest Continent", body: "Australia is the smallest continent, often called the 'Island Continent'.", color: "#16a085" },
+  { id: 440, cat: "Fact101", title: "Smallest Continent", body: "Australia is the smallest continent, often called the 'Island Continent'.", color: "#16a085" },
 
   // DAY 45: Finance & Flora
   { id: 441, cat: "Polity", title: "Article 266", body: "Consolidated Fund of India: All Govt revenues and loans are kept here.", color: "#2980b9" },
@@ -538,7 +538,7 @@ const gyanDatabase = [
   { id: 447, cat: "Motivation", title: "2-Minute Rule", body: "If a task takes less than 2 minutes, do it now. Don't add to your list.", color: "#34495e" },
   { id: 448, cat: "CA 2026", title: "Green Hydrogen", body: "2026: India's first Green Hydrogen bunkering terminal opened in Tuticorin.", color: "#f39c12" },
   { id: 449, cat: "Awareness", title: "Vishing", body: "Voice Phishing: Scammers use AI clones of voices to steal money over phone.", color: "#c0392b" },
-  { id: 450, cat: "Quiz", title: "First Satellite", body: "Aryabhata (1975) was India's first satellite, launched by the Soviet Union.", color: "#3498db" },
+  { id: 450, cat: "Fact101", title: "First Satellite", body: "Aryabhata (1975) was India's first satellite, launched by the Soviet Union.", color: "#3498db" },
 
   // DAY 46: States & Proteins
   { id: 451, cat: "Polity", title: "Article 200", body: "Powers of the Governor to give or withhold assent to State Bills.", color: "#3498db" },
@@ -550,7 +550,7 @@ const gyanDatabase = [
   { id: 457, cat: "Did You Know?", title: "Diamonds", body: "Until 1726, India was the world's only producer of commercial diamonds.", color: "#d35400" },
   { id: 458, cat: "CA 2026", title: "Bhasha-Net", body: "2026: India's high-speed internet project specifically for regional languages.", color: "#2ecc71" },
   { id: 459, cat: "Awareness", title: "Phishing 2026", body: "New 'Quishing' (QR-Phishing): Never scan a QR code to 'receive' money.", color: "#c0392b" },
-  { id: 460, cat: "Quiz", title: "Longest River", body: "The Nile (Africa) is the longest river; the Amazon has the most water volume.", color: "#16a085" },
+  { id: 460, cat: "Fact101", title: "Longest River", body: "The Nile (Africa) is the longest river; the Amazon has the most water volume.", color: "#16a085" },
 
   // DAY 47: Rights & Evolution
   { id: 461, cat: "Polity", title: "Article 32", body: "Right to Remedies. Ambedkar called it the 'Heart and Soul' of the Constitution.", color: "#2980b9" },
@@ -562,7 +562,7 @@ const gyanDatabase = [
   { id: 467, cat: "Motivation", title: "Zeigarnik Effect", body: "Our brain hates unfinished work. Just start for 5 mins to break resistance.", color: "#34495e" },
   { id: 468, cat: "CA 2026", title: "Digital Rupee", body: "2026 Update: 50% of all P2P transactions in India now use CBDC (e-Rupee).", color: "#16a085" },
   { id: 469, cat: "Awareness", title: "Smart-Device Security", body: "2026: IoT devices (Fridge/AC) are common hacker targets. Use separate Wi-Fi.", color: "#c0392b" },
-  { id: 470, cat: "Quiz", title: "Highest Waterfall", body: "Angel Falls (Venezuela) is the highest uninterrupted waterfall on Earth.", color: "#3498db" },
+  { id: 470, cat: "Fact101", title: "Highest Waterfall", body: "Angel Falls (Venezuela) is the highest uninterrupted waterfall on Earth.", color: "#3498db" },
 
   // DAY 48: Duties & Climate
   { id: 471, cat: "Polity", title: "Article 51A", body: "Lists 11 Fundamental Duties; added by 42nd Amendment in 1976.", color: "#3498db" },
@@ -574,7 +574,7 @@ const gyanDatabase = [
   { id: 477, cat: "Did You Know?", title: "Sushruta", body: "The Indian 'Father of Surgery' who practiced rhinoplasty 2,600 years ago.", color: "#d35400" },
   { id: 478, cat: "CA 2026", title: "Project Kusha", body: "India's own S-400-like air defense system to be fully operational in 2026.", color: "#7f8c8d" },
   { id: 479, cat: "Awareness", title: "AI-Safety Act", body: "2026: Law mandates all AI-generated content must carry a visible watermark.", color: "#2ecc71" },
-  { id: 480, cat: "Quiz", title: "Iron Man", body: "Sardar Vallabhbhai Patel, the first Home Minister of independent India.", color: "#3498db" },
+  { id: 480, cat: "Fact101", title: "Iron Man", body: "Sardar Vallabhbhai Patel, the first Home Minister of independent India.", color: "#3498db" },
 
   // DAY 49: Rights & Biology
   { id: 481, cat: "Polity", title: "Article 21A", body: "Right to Education: Free and compulsory for children aged 6 to 14.", color: "#3498db" },
@@ -586,7 +586,7 @@ const gyanDatabase = [
   { id: 487, cat: "Math", title: "Prime Sum", body: "The sum of the first five prime numbers (2+3+5+7+11) is 28.", color: "#1abc9c" },
   { id: 488, cat: "CA 2026", title: "Semicon India", body: "2026: Tata and Micron semiconductor plants in Gujarat started global exports.", color: "#16a085" },
   { id: 489, cat: "Awareness", title: "Blue Light", body: "Using 'Night Shift' mode helps Melatonin production for better sleep.", color: "#2ecc71" },
-  { id: 490, cat: "Quiz", title: "Oldest Range", body: "The Aravalli mountains are the oldest fold mountains in India.", color: "#16a085" },
+  { id: 490, cat: "Fact101", title: "Oldest Range", body: "The Aravalli mountains are the oldest fold mountains in India.", color: "#16a085" },
 
   // DAY 50: Revision & Governance
   { id: 491, cat: "Polity", title: "Joint Sitting", body: "Presided over by the Speaker of Lok Sabha (Article 108).", color: "#2980b9" },
@@ -598,7 +598,7 @@ const gyanDatabase = [
   { id: 497, cat: "Did You Know?", title: "Zero Discovery", body: "The concept of Zero was given to the world by Indian scholar Brahmagupta.", color: "#7f8c8d" },
   { id: 498, cat: "CA 2026", title: "Cyber-Security", body: "India ranked Top 5 globally in Cyber-Security Readiness in 2026.", color: "#34495e" },
   { id: 499, cat: "Awareness", title: "E-Waste 2026", body: "India's 2026 law: Companies must 'Buy Back' old gadgets for recycling.", color: "#c0392b" },
-  { id: 500, cat: "Quiz", title: "Largest Ocean", body: "The Pacific Ocean covers more than one-third of the Earth's surface.", color: "#16a085" },
+  { id: 500, cat: "Fact101", title: "Largest Ocean", body: "The Pacific Ocean covers more than one-third of the Earth's surface.", color: "#16a085" },
 
 // DAY 51: Emergencies & Space
   { id: 501, cat: "Polity", title: "Article 352", body: "National Emergency: Proclaimed by President on grounds of war or armed rebellion.", color: "#3498db" },
@@ -609,7 +609,7 @@ const gyanDatabase = [
   { id: 506, cat: "Logic", title: "Calendars", body: "Odd Days: The number of days more than a complete week (e.g., 10 days = 3 odd days).", color: "#8e44ad" },
   { id: 507, cat: "CA 2026", title: "National Quantum", body: "India successfully developed its first 50-qubit quantum computer in 2026.", color: "#34495e" },
   { id: 508, cat: "Motivation", title: "Spaced Repetition", body: "Reviewing information at increasing intervals to move it to long-term memory.", color: "#d35400" },
-  { id: 509, cat: "Quiz", title: "First Census", body: "The first complete/synchronous census of India was conducted in 1881.", color: "#16a085" },
+  { id: 509, cat: "Fact101", title: "First Census", body: "The first complete/synchronous census of India was conducted in 1881.", color: "#16a085" },
   { id: 510, cat: "Awareness", title: "Phishing 2026", body: "Never click 'Account Verification' links via SMS; banks never ask for passwords.", color: "#c0392b" },
 
   // DAY 52: Finance & Freedom
@@ -622,7 +622,7 @@ const gyanDatabase = [
   { id: 517, cat: "Did You Know?", title: "Shampoo", body: "Derived from 'Champo' (Sanskrit); the concept originated in Ancient India.", color: "#7f8c8d" },
   { id: 518, cat: "CA 2026", title: "Bhavasagara", body: "India's 1st National Repository for Deep-Sea Fauna, designated in Kochi (2026).", color: "#34495e" },
   { id: 519, cat: "Awareness", title: "SIM Swap", body: "If your signal disappears suddenly, contact your bank immediately to prevent fraud.", color: "#c0392b" },
-  { id: 520, cat: "Quiz", title: "Silicon Valley", body: "Bengaluru is widely known as the Silicon Valley of India.", color: "#16a085" },
+  { id: 520, cat: "Fact101", title: "Silicon Valley", body: "Bengaluru is widely known as the Silicon Valley of India.", color: "#16a085" },
 
   // DAY 53: Rights & Resources
   { id: 521, cat: "Polity", title: "Article 32", body: "Right to Remedies: The 'Heart and Soul' of the Constitution (Supreme Court Writs).", color: "#3498db" },
@@ -634,7 +634,7 @@ const gyanDatabase = [
   { id: 527, cat: "Math", title: "Prime Sum", body: "The sum of the first five prime numbers (2+3+5+7+11) is 28.", color: "#1abc9c" },
   { id: 528, cat: "CA 2026", title: "SDG Dashboard", body: "MoSPI launched the 'India SDG Dashboard 2026' to track national targets.", color: "#2980b9" },
   { id: 529, cat: "Awareness", title: "Dark Mode", body: "Reduces blue light exposure, helping maintain your body's Melatonin levels.", color: "#2c3e50" },
-  { id: 530, cat: "Quiz", title: "Tiger State", body: "Madhya Pradesh holds the record for the highest tiger population in India.", color: "#d35400" },
+  { id: 530, cat: "Fact101", title: "Tiger State", body: "Madhya Pradesh holds the record for the highest tiger population in India.", color: "#d35400" },
 
   // DAY 54: Bodies & Battles
   { id: 531, cat: "Polity", title: "Article 315", body: "Constitutional provision for the Union and State Public Service Commissions.", color: "#3498db" },
@@ -646,7 +646,7 @@ const gyanDatabase = [
   { id: 537, cat: "Did You Know?", title: "Chess Origin", body: "Chess originated in India, known originally as 'Chaturanga'.", color: "#d35400" },
   { id: 538, cat: "CA 2026", title: "LUPEX", body: "ISRO-JAXA joint mission (2026) to explore water ice on the Moon's South Pole.", color: "#7f8c8d" },
   { id: 539, cat: "Awareness", title: "VPN Security", body: "Virtual Private Networks encrypt your data, but free ones may sell your history.", color: "#c0392b" },
-  { id: 540, cat: "Quiz", title: "Largest Delta", body: "The Ganga-Brahmaputra Delta (Sundarbans) is the world's largest delta.", color: "#16a085" },
+  { id: 540, cat: "Fact101", title: "Largest Delta", body: "The Ganga-Brahmaputra Delta (Sundarbans) is the world's largest delta.", color: "#16a085" },
 
   // DAY 55: Amendments & Energy
   { id: 541, cat: "Polity", title: "42nd Amendment", body: "Known as the 'Mini Constitution'; added 'Socialist' and 'Secular' to the Preamble.", color: "#2980b9" },
@@ -658,7 +658,7 @@ const gyanDatabase = [
   { id: 547, cat: "Motivation", title: "80/20 Rule", body: "Pareto Principle: 20% of your focused study time produces 80% of your results.", color: "#34495e" },
   { id: 548, cat: "CA 2026", title: "Bharat-GPU", body: "India launched its 1st high-performance GPU cluster for AI development (2026).", color: "#f39c12" },
   { id: 549, cat: "Awareness", title: "Incognito", body: "Incognito mode hides history on your device but NOT from your ISP or Admin.", color: "#c0392b" },
-  { id: 550, cat: "Quiz", title: "First Citizen", body: "The President of India is the symbolic First Citizen of the nation.", color: "#3498db" },
+  { id: 550, cat: "Fact101", title: "First Citizen", body: "The President of India is the symbolic First Citizen of the nation.", color: "#3498db" },
 
   // DAY 56: Parliament & Particles
   { id: 551, cat: "Polity", title: "Article 110", body: "Defines Money Bills. The Speaker of Lok Sabha decides if a bill is a Money Bill.", color: "#3498db" },
@@ -670,7 +670,7 @@ const gyanDatabase = [
   { id: 557, cat: "Did You Know?", title: "Shakuntala Devi", body: "Known as the 'Human Computer'; could multiply 13-digit numbers in 28 seconds.", color: "#d35400" },
   { id: 558, cat: "CA 2026", title: "Indo-USA Pact", body: "2026: Major drone and jet engine technology transfer agreement signed.", color: "#2ecc71" },
   { id: 559, cat: "Awareness", title: "2FA", body: "Two-Factor Authentication: The best defense against social media hacking.", color: "#c0392b" },
-  { id: 560, cat: "Quiz", title: "Smallest State", body: "Goa is the smallest state in India by total land area.", color: "#16a085" },
+  { id: 560, cat: "Fact101", title: "Smallest State", body: "Goa is the smallest state in India by total land area.", color: "#16a085" },
 
   // DAY 57: Local Govt & Biology
   { id: 561, cat: "Polity", title: "73rd Amendment", body: "Gave constitutional status to Panchayati Raj (Rural Local Bodies).", color: "#2980b9" },
@@ -682,7 +682,7 @@ const gyanDatabase = [
   { id: 567, cat: "Motivation", title: "Growth Mindset", body: "The belief that persistence and effort can lead to higher intelligence.", color: "#34495e" },
   { id: 568, cat: "CA 2026", title: "Solar Power", body: "India targets 500 GW of non-fossil fuel energy capacity by 2030.", color: "#16a085" },
   { id: 569, cat: "Awareness", title: "Post-Naxal Dev.", body: "2026 Focus: Fast-tracking schools and hospitals in former Red Corridor districts.", color: "#c0392b" },
-  { id: 570, cat: "Quiz", title: "Yamuna River", body: "The largest and most important tributary of the River Ganga.", color: "#3498db" },
+  { id: 570, cat: "Fact101", title: "Yamuna River", body: "The largest and most important tributary of the River Ganga.", color: "#3498db" },
 
   // DAY 58: Duties & Climate
   { id: 571, cat: "Polity", title: "Article 51A", body: "Fundamental Duties (11 total). Inspired by the USSR constitution.", color: "#3498db" },
@@ -694,7 +694,7 @@ const gyanDatabase = [
   { id: 577, cat: "Did You Know?", title: "Nalanda", body: "First residential university in the world, founded in 5th Century AD.", color: "#d35400" },
   { id: 578, cat: "CA 2026", title: "Antariksh Startups", body: "India's space venture capital fund began investing in deep-tech startups in 2026.", color: "#7f8c8d" },
   { id: 579, cat: "Awareness", title: "QR Fraud", body: "Reminder: You scan a QR code to SEND money, never to RECEIVE it.", color: "#2ecc71" },
-  { id: 580, cat: "Quiz", title: "National Anthem", body: "Written by Rabindranath Tagore; first sung in 1911 Calcutta session.", color: "#3498db" },
+  { id: 580, cat: "Fact101", title: "National Anthem", body: "Written by Rabindranath Tagore; first sung in 1911 Calcutta session.", color: "#3498db" },
 
   // DAY 59: Rights & Cells
   { id: 581, cat: "Polity", title: "Article 368", body: "Grants Parliament the power to amend the Constitution.", color: "#3498db" },
@@ -706,7 +706,7 @@ const gyanDatabase = [
   { id: 587, cat: "Math", title: "Pythagorean", body: "Triplets: (3,4,5), (5,12,13), (8,15,17). Memorize for fast geometry.", color: "#1abc9c" },
   { id: 588, cat: "CA 2026", title: "Green Bonds", body: "2026: India raised $10B via Green Bonds for solar/wind infra.", color: "#16a085" },
   { id: 589, cat: "Awareness", title: "Phishing 2026", body: "New 'Quishing' (QR-Phishing): Scammers use fake QRs in public areas.", color: "#2ecc71" },
-  { id: 590, cat: "Quiz", title: "Golden Fiber", body: "Jute is known as the 'Golden Fiber' for its high economic value.", color: "#16a085" },
+  { id: 590, cat: "Fact101", title: "Golden Fiber", body: "Jute is known as the 'Golden Fiber' for its high economic value.", color: "#16a085" },
 
   // DAY 60: Revision & Governance
   { id: 591, cat: "Polity", title: "NITI Aayog", body: "Replaced Planning Commission (2015); the PM is the ex-officio Chairman.", color: "#2980b9" },
@@ -718,7 +718,7 @@ const gyanDatabase = [
   { id: 597, cat: "Did You Know?", title: "Number System", body: "Modern decimal system and place value were developed in Ancient India.", color: "#7f8c8d" },
   { id: 598, cat: "CA 2026", title: "Digital Personal Data", body: "2026: New rules require apps to allow users to delete all personal data.", color: "#34495e" },
   { id: 599, cat: "Awareness", title: "Post-Naxal Dev.", body: "Final 2026 focus: Integration of remote tribal areas into the mainstream.", color: "#c0392b" },
-  { id: 600, cat: "Quiz", title: "Largest Ocean", body: "The Pacific Ocean covers more than one-third of the entire Earth.", color: "#16a085" }
+  { id: 600, cat: "Fact101", title: "Largest Ocean", body: "The Pacific Ocean covers more than one-third of the entire Earth.", color: "#16a085" }
 ];
 // This line is CRITICAL for the Web Version to work
 window.gyanDatabase = gyanDatabase;
