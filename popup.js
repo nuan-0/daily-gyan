@@ -9,13 +9,13 @@ const brightColors = ['#FFFFFF', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#F
 
 // YOUR 7-DAY MESSAGE CYCLE
 const weeklyMessages = [
-    "See You Tomorrow! 👋",      // Sunday (Index 0)
+    "Daily Revision Done! 📚",      // Sunday (Index 0)
     "Daily Streak Maintained! 🔥", // Monday (Index 1)
-    "Daily Revision Done! 📚",    // Tuesday (Index 2)
-    "Syllabus Covered ✅",        // Wednesday (Index 3)
-    "Consistency Maintained 🔥",  // Thursday (Index 4)
-    "Quota Complete ✍️",          // Friday (Index 5)
-    "Goal Reached 🔒"             // Saturday (Index 6)
+    "Quota Complete ✍️",    // Tuesday (Index 2)
+    "Consistency Maintained 🔥",        // Wednesday (Index 3)
+    "Goal Reached 🔒",  // Thursday (Index 4)
+    "Syllabus Covered ✅",          // Friday (Index 5)
+    "See You Tomorrow! 👋"             // Saturday (Index 6)
 ];
 
 function updateUI(globalIndex) {
