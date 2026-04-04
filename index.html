@@ -37,9 +37,9 @@
             border: 1px solid rgba(255,255,255,0.4);
         }
 
-        /* VIBRANT COLORFUL 3D BOX */
+        /* VIBRANT 3D MAIN BOX */
         #gyan-card {
-            background: linear-gradient(145deg, #ffffff, #f0f0f0); 
+            background-color: #ffffff; 
             border-radius: 40px;
             padding: 50px 25px;
             min-height: 280px;
@@ -51,7 +51,7 @@
                         -10px -10px 30px rgba(255,255,255,0.8);
             margin-bottom: 35px;
             position: relative;
-            transition: all 0.5s ease;
+            transition: background-color 0.6s ease, transform 0.2s ease;
             border: 2px solid rgba(255,255,255,0.9);
         }
 
@@ -73,7 +73,6 @@
             line-height: 1.4;
             color: #1a202c; 
             font-weight: 800;
-            text-align: center;
         }
 
         #progress-text {
@@ -81,7 +80,7 @@
             color: #2d3436;
             margin-bottom: 25px;
             font-weight: 900;
-            background: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.5);
             display: inline-block;
             padding: 8px 20px;
             border-radius: 15px;
@@ -89,7 +88,7 @@
 
         .button-group { display: flex; gap: 15px; width: 100%; }
 
-        /* LARGE BOLD 3D BACK ARROW */
+        /* LARGE BOLD BACK BUTTON ARROW */
         #back-btn {
             flex: 1;
             background: #ffffff;
@@ -120,13 +119,13 @@
             padding: 15px;
         }
 
-        #btn-text { font-size: 1.1rem; font-weight: 800; }
+        #btn-text { font-size: 1.15rem; font-weight: 800; }
         #finish-date { font-size: 0.7rem; font-weight: 400; margin-top: 3px; display: none; }
 
         button:active { transform: scale(0.94); }
         button:disabled { cursor: not-allowed; }
 
-        /* COFFEE BUTTON RESTORED */
+        /* RAZORPAY LINK UPDATED */
         .support-btn {
             margin-top: 30px;
             display: inline-flex;
@@ -148,11 +147,13 @@
 </head>
 <body>
     <div class="app-container">
-        <div id="progress-text">Daily Gyan: 1 OF 10</div>
+        <div id="progress-text">Card 1 of 10 today</div>
+
         <div id="gyan-card">
-            <span id="category">Fact101</span>
+            <span id="category">GENERAL GYAN</span>
             <div id="card-content">Loading...</div>
         </div>
+
         <div class="button-group">
             <button id="back-btn">⬅</button>
             <button id="next-btn">
@@ -160,9 +161,11 @@
                 <span id="finish-date"></span>
             </button>
         </div>
-        <a href="razorpay.me/@NURA" target="_blank" class="support-btn">
-            ☕ Buy me a coffee ☕
+
+        <a href="https://razorpay.me/@NURA" target="_blank" class="support-btn">
+            ☕ Buy Me a Coffee! ☕
         </a>
+
         <div class="footer">Daily Gyan by <b>@Important4Exams</b></div>
     </div>
     <script src="gyan_data.js"></script>
