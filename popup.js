@@ -1,22 +1,19 @@
-/**
- * Fact101 Logic - Vibrant Color & 7-Day Cycle
- */
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// Vibrant attractive colors
-const attractiveColors = ['#FFEBEE', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0'];
+// High-Energy Attractive Colors for the Big Box
+const vibrantColors = ['#FFEBEE', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0', '#E0F7FA'];
 
-// YOUR 7-DAY MESSAGE CYCLE
+// YOUR EXACT 7-DAY MESSAGE CYCLE
 const weeklyMessages = [
     "Daily Revision Done! 📚",      // Sunday (Index 0)
-    "Daily Streak Maintained! 🔥", // Monday (Index 1)
-    "Quota Complete ✍️",    // Tuesday (Index 2)
-    "Consistency Maintained 🔥",        // Wednesday (Index 3)
-    "Goal Reached 🔒",  // Thursday (Index 4)
+    "Daily Streak Maintained! 🔥",  // Monday (Index 1)
+    "Quota Complete ✍️",           // Tuesday (Index 2)
+    "Consistency Maintained 🔥",    // Wednesday (Index 3)
+    "Goal Reached 🔒",              // Thursday (Index 4)
     "Syllabus Covered ✅",          // Friday (Index 5)
-    "See You Tomorrow! 👋"             // Saturday (Index 6)
+    "See You Tomorrow! 👋"          // Saturday (Index 6)
 ];
 
 function updateUI(globalIndex) {
@@ -24,17 +21,18 @@ function updateUI(globalIndex) {
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
-    let catName = (item.category || item.cat || "Fact101").toUpperCase();
+    let catName = (item.category || item.cat || "GENERAL GYAN").toUpperCase();
     
-    // REPLACE "QUIZ" WITH "FACT101" ONLY
+    // Replace QUIZ with FACT101 only
     if (catName.includes("QUIZ")) { catName = "FACT101"; }
 
     document.getElementById('category').innerText = catName;
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
-    // CHANGE TO ATTRACTIVE COLOR
+    // APPLY DYNAMIC COLOR TO BIG BOX
     const card = document.getElementById('gyan-card');
-    card.style.backgroundColor = attractiveColors[Math.floor(Math.random() * attractiveColors.length)];
+    const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+    card.style.backgroundColor = color;
     
     // 3D Bounce
     card.style.transform = "scale(1.02)";
@@ -48,7 +46,8 @@ function updateState() {
     const backBtn = document.getElementById('back-btn');
     const progress = document.getElementById('progress-text');
 
-    progress.innerText = `Fact101: ${currentViewingIndex + 1} OF 10`;
+    progress.innerText = `Card ${currentViewingIndex + 1} of 10 today`;
+    
     backBtn.disabled = (currentViewingIndex <= 0);
 
     if (currentViewingIndex < maxUnlocked) {
@@ -59,8 +58,10 @@ function updateState() {
     } else if (maxUnlocked >= 9) {
         const now = new Date();
         btnText.innerText = weeklyMessages[now.getDay()];
+        
         dateText.innerText = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
         dateText.style.display = "block";
+        
         nextBtn.disabled = true;
         nextBtn.style.opacity = "0.7";
     } else {
