@@ -15,25 +15,31 @@ const weeklyMessages = [
 ];
 
 function updateUI(globalIndex) {
+    // 1. Get your data
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
     
-    // 1. Get Category
-    let catName = (item.category || item.cat || "GENERAL GYAN").toUpperCase();
-    
-    // 2. Get Title (New!)
+    // 2. THIS IS THE FIX: We use 'item.body' because that is what you wrote in your JS file
+    let catName = (item.cat || "GENERAL GYAN").toUpperCase();
     let titleText = item.title || ""; 
+    let bodyText = item.body || ""; // Matches your "body" field
 
+    // 3. Push to Screen
     document.getElementById('category').innerText = catName;
-    document.getElementById('card-title').innerText = titleText; // Puts the title in the card
-    document.getElementById('card-content').innerText = item.fact || item.body || "";
-
-    // 3. Dynamic Color & 3D Pop
-    const card = document.getElementById('gyan-card');
-    card.style.backgroundColor = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
     
+    // Ensure this ID exists in your index.html!
+    const titleElement = document.getElementById('card-title');
+    if(titleElement) titleElement.innerText = titleText; 
+
+    document.getElementById('card-content').innerText = bodyText;
+
+    // 4. Use YOUR custom colors from the data (e.g., #3498db)
+    const card = document.getElementById('gyan-card');
+    card.style.backgroundColor = item.color || "#ffffff";
+    
+    // 3D Pop Effect
     card.style.transform = "scale(1.02)";
     setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
