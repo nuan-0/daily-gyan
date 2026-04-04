@@ -13,23 +13,32 @@ const weeklyMessages = [
     "See You Tomorrow! 👋"          
 ];
 
+// LIGHTER PASTEL COLORS (For better text visibility)
+const vibrantColors = [
+    '#ffffff', // Pure White
+    '#F0FFF4', // Soft Mint
+    '#EBF8FF', // Pale Sky Blue
+    '#FFF5F5', // Soft Rose
+    '#FAF5FF', // Lavender Mist
+    '#FFFFF0', // Ivory
+    '#F0F4FF'  // Ghost White
+];
+
 function updateUI(globalIndex) {
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
     
-    // Mapping your data exactly
     document.getElementById('category').innerText = (item.cat || "GENERAL GYAN").toUpperCase();
     document.getElementById('card-title').innerText = item.title || "";
     document.getElementById('card-content').innerText = item.body || "";
 
     const card = document.getElementById('gyan-card');
     
-    // Use the color from your JS file (e.g., #3498db)
-    card.style.backgroundColor = item.color || "#ffffff";
+    // This will now pick from the new LIGHTER list above
+    card.style.backgroundColor = item.color || vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
     
-    // 3D Pop Effect
     card.style.transform = "scale(1.02)";
     setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
