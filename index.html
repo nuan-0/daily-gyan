@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="color-scheme" content="light">
     <title>Fact101 - @Important4Exams</title>
     <style>
         :root {
-            color-scheme: light; /* Forces Light Mode UI */
             --primary: #2d3436;
-            --glass: rgba(255, 255, 255, 0.4);
-            --card-shadow: 20px 20px 45px rgba(0,0,0,0.3);
-            --light-glow: -15px -15px 35px rgba(255,255,255,1);
+            --glass: rgba(255, 255, 255, 0.3);
+            --card-shadow: 20px 20px 45px rgba(0,0,0,0.2);
+            --light-glow: -12px -12px 30px rgba(255,255,255,0.8);
         }
 
         body {
@@ -25,7 +23,6 @@
             animation: gradientMove 15s ease infinite;
             font-family: 'Segoe UI', Roboto, sans-serif;
             overflow: hidden;
-            color: #1a202c;
         }
 
         @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
@@ -34,18 +31,16 @@
             width: 92%;
             max-width: 400px;
             background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
             border-radius: 40px;
             padding: 35px 22px;
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        /* 3D BOX: Forced to stay Bright White */
         #gyan-card {
-            background-color: #ffffff !important; 
+            background-color: #ffffff; 
             border-radius: 35px;
             padding: 50px 25px;
             min-height: 280px;
@@ -57,26 +52,25 @@
             margin-bottom: 35px;
             position: relative;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid #ffffff;
         }
 
         #category {
             position: absolute;
             top: -18px;
             background: var(--primary);
-            color: #ffffff !important;
+            color: #fff;
             padding: 10px 25px;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 900;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             text-transform: uppercase;
         }
 
         #card-content {
-            font-size: 1.5rem;
-            line-height: 1.4;
-            color: #1a202c !important; 
+            font-size: 1.45rem;
+            line-height: 1.5;
+            color: #1a202c; 
             font-weight: 700;
         }
 
@@ -85,7 +79,7 @@
             color: #2d3436;
             margin-bottom: 20px;
             font-weight: 800;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.5);
             display: inline-block;
             padding: 6px 18px;
             border-radius: 12px;
@@ -99,13 +93,21 @@
             font-weight: 800;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
 
-        #back-btn { background: #ffffff; color: #636e72; flex: 1; }
-        #next-btn { background: var(--primary); color: #ffffff; flex: 2; }
+        /* Large attractive back arrow */
+        #back-btn { 
+            background: #ffffff; 
+            color: #2d3436; 
+            flex: 1; 
+            font-size: 1.5rem; 
+            line-height: 1;
+        }
         
-        .btn-3d:active:not(:disabled) { transform: scale(0.94); }
+        #next-btn { background: var(--primary); color: #fff; flex: 2; font-size: 1rem; }
+        
+        .btn-3d:active:not(:disabled) { transform: scale(0.94); box-shadow: none; }
         .btn-3d:disabled { opacity: 0.4; cursor: not-allowed; }
 
         .support-btn {
@@ -114,11 +116,11 @@
             background: #ffffff;
             color: #2d3436;
             text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 22px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
         }
 
         .footer { margin-top: 25px; font-size: 0.85rem; color: #2d3436; font-weight: 600; }
@@ -129,13 +131,13 @@
         <div id="progress-text">Fact101: 1 OF 10</div>
         <div id="gyan-card">
             <span id="category">Fact101</span>
-            <div id="card-content">Initialising...</div>
+            <div id="card-content">Initializing...</div>
         </div>
         <div class="button-group">
-            <button id="back-btn" class="btn-3d">←</button>
+            <button id="back-btn" class="btn-3d">🔙</button>
             <button id="next-btn" class="btn-3d">Next Fact101 →</button>
         </div>
-        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="support-btn">☕ Support @Important4Exams</a>
+        <a href="https://upilinks.in/payment-link/upi925459343" target="_blank" class="support-btn">☕ Buy me a coffee</a>
         <div class="footer">Daily Gyan by <b>@Important4Exams</b></div>
     </div>
     <script src="gyan_data.js"></script>
