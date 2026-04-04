@@ -1,21 +1,12 @@
 /**
- * Fact101 LOGIC - NAVIGATION & COLOR SYNC
+ * Fact101 LOGIC - FINAL VERSION
  */
-
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// High-Energy Vibrant Colors for the 3D Box
-const vibrantColors = [
-    '#FFEBEE', // Soft Red
-    '#E3F2FD', // Sky Blue
-    '#F1F8E9', // Mint Green
-    '#FFFDE7', // Bright Yellow
-    '#F3E5F5', // Lavender
-    '#E0F7FA', // Cyan
-    '#FFFFFF'  // Pure White
-];
+// Vibrant attractive colors
+const colors = ['#FFFFFF', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0'];
 
 function updateUI(globalIndex) {
     const db = window.gyanDatabase || window.gyanData || gyanDatabase;
@@ -24,20 +15,15 @@ function updateUI(globalIndex) {
     const item = db[globalIndex];
     let catName = (item.category || item.cat || "Fact101").toUpperCase();
     
-    // STRICT "QUIZ" TO "FACT101" OVERRIDE
+    // QUIZ REPLACEMENT
     if (catName.includes("QUIZ")) { catName = "FACT101"; }
 
     document.getElementById('category').innerText = catName;
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
-    // CHANGE COLOR ON TAP
+    // CHANGE COLOR ON EVERY CLICK
     const card = document.getElementById('gyan-card');
-    const randomColor = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
-    card.style.backgroundColor = randomColor;
-    
-    // 3D Bounce Animation
-    card.style.transform = "scale(1.03)";
-    setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
+    card.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 }
 
 function updateState() {
@@ -46,11 +32,8 @@ function updateState() {
     const progress = document.getElementById('progress-text');
 
     progress.innerText = `Fact101: ${currentViewingIndex + 1} OF 10`;
-    
-    // Back button state
     backBtn.disabled = (currentViewingIndex <= 0);
 
-    // Next button state
     if (currentViewingIndex < maxUnlocked) {
         nextBtn.innerText = "Forward →";
         nextBtn.disabled = false;
@@ -103,6 +86,4 @@ function init() {
     updateState();
 }
 
-window.onload = function() {
-    setTimeout(init, 100);
-};
+window.onload = function() { setTimeout(init, 100); };
