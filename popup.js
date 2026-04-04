@@ -1,8 +1,11 @@
+/**
+ * Daily Gyan Logic - Original Labels Restored
+ */
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// High-Energy Attractive Colors for the Big Box
+// Vibrant Colors for the main 3D Box
 const vibrantColors = ['#FFEBEE', '#E3F2FD', '#F1F8E9', '#FFFDE7', '#F3E5F5', '#FFF3E0', '#E0F7FA'];
 
 // YOUR EXACT 7-DAY MESSAGE CYCLE
@@ -21,20 +24,18 @@ function updateUI(globalIndex) {
     if (!db || !db[globalIndex]) return;
 
     const item = db[globalIndex];
+    // Category wording is now strictly what is in your data file
     let catName = (item.category || item.cat || "GENERAL GYAN").toUpperCase();
-    
-    // Replace QUIZ with FACT101 only
-    if (catName.includes("QUIZ")) { catName = "FACT101"; }
 
     document.getElementById('category').innerText = catName;
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
-    // APPLY DYNAMIC COLOR TO BIG BOX
+    // DYNAMIC COLOR ON MAIN BOX
     const card = document.getElementById('gyan-card');
     const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
     card.style.backgroundColor = color;
     
-    // 3D Bounce
+    // 3D Pop
     card.style.transform = "scale(1.02)";
     setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
@@ -46,6 +47,7 @@ function updateState() {
     const backBtn = document.getElementById('back-btn');
     const progress = document.getElementById('progress-text');
 
+    // Restored: Card X of 10 today
     progress.innerText = `Card ${currentViewingIndex + 1} of 10 today`;
     
     backBtn.disabled = (currentViewingIndex <= 0);
@@ -56,6 +58,7 @@ function updateState() {
         nextBtn.disabled = false;
         nextBtn.style.opacity = "1";
     } else if (maxUnlocked >= 9) {
+        // Today's Date-based message
         const now = new Date();
         btnText.innerText = weeklyMessages[now.getDay()];
         
