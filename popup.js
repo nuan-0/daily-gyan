@@ -1,12 +1,11 @@
 /**
- * Fact101 LOGIC - NAVIGATION & COLOR FIXED
+ * Fact101 LOGIC - NAVIGATION & REPLACEMENT FIXED
  */
 
 let currentViewingIndex = 0;
 let maxUnlocked = 0;
 let startIndex = 0;
 
-// High-Energy Attractive Colors
 const brightColors = ['#FFFFFF', '#E3F2FD', '#FFF9C4', '#F3E5F5', '#E8F5E9', '#FFF3E0'];
 
 function updateUI(globalIndex) {
@@ -16,20 +15,18 @@ function updateUI(globalIndex) {
     const item = db[globalIndex];
     let catName = (item.category || item.cat || "Fact101").toUpperCase();
     
-    // REPLACE "QUIZ" WITH "FACT101"
-    if (catName === "QUIZ") {
+    // STRICT REPLACEMENT: If the word is QUIZ, force it to FACT101
+    if (catName.includes("QUIZ")) {
         catName = "FACT101";
     }
 
     document.getElementById('category').innerText = catName;
     document.getElementById('card-content').innerText = item.fact || item.body || "";
 
-    // Vibrant Color Change
     const card = document.getElementById('gyan-card');
     const color = brightColors[Math.floor(Math.random() * brightColors.length)];
     card.style.backgroundColor = color;
     
-    // Bounce Animation
     card.style.transform = "scale(1.03)";
     setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
 }
